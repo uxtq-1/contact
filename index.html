@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ops Online Solutions</title>
+
+  <!--  ⬇ CSP (aligns with NIST SC-5 / PCI 6.4.3) – send as HTTP header in prod -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'nonce-{{CSP_NONCE}}' https://www.google.com https://www.gstatic.com;
+                 style-src  'self' 'nonce-{{CSP_NONCE}}' https://cdnjs.cloudflare.com;
+                 img-src    'self' data:;
+                 connect-src 'self' https://api.opsonlinesolutions.com https://script.google.com;
+                 object-src 'none';
+                 base-uri 'self';
+                 frame-ancestors 'none';">
+
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" media="(max-width:768px)" href="css/small-screens.css" nonce="{{CSP_NONCE}}">
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="business-operations.html">Business Operations</a></li>
+      <li><a href="contact-center.html">Contact Center</a></li>
+      <li><a href="it-support.html">IT Support</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="contact.html">Contact&nbsp;Us</a></li>
+      <li><a href="join.html">Join&nbsp;Us</a></li>
+      <li><a href="security.html">Security</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Welcome to Ops Online Solutions</h1>
+    <p>Empowering secure remote solutions with cutting-edge strategies.</p>
+    <img src="assets/hero.jpg" alt="Team collaborating" loading="lazy">
+  </section>
+
+  <section class="services">
+    <div class="service-item">
+      <h3>Business Operations</h3>
+      <p>Optimize processes & increase efficiency.</p>
+      <a class="btn" href="business-operations.html">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3>IT Support</h3>
+      <p>24 × 7 monitoring & remediation.</p>
+      <a class="btn" href="it-support.html">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3>Contact Center</h3>
+      <p>Omnichannel customer engagement.</p>
+      <a class="btn" href="contact-center.html">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3>Professionals</h3>
+      <p>Top-tier talent on demand.</p>
+      <a class="btn" href="professionals.html">Learn More</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Ops Online Solutions
+  <nav class="footer-links">
+    <ul>
+      <li><a href="business-operations.html">Business Ops</a></li>
+      <li><a href="contact-center.html">Contact Center</a></li>
+      <li><a href="it-support.html">IT Support</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="security.html">Security</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="js/main.js" defer nonce="{{CSP_NONCE}}"></script>
+</body>
+</html>
