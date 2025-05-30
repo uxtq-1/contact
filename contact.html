@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Us – Ops Online Solutions</title>
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'nonce-{{CSP_NONCE}}' https://www.google.com https://www.gstatic.com;
+                 style-src  'self' 'nonce-{{CSP_NONCE}}' https://cdnjs.cloudflare.com;
+                 img-src    'self' data:;
+                 connect-src 'self' https://api.opsonlinesolutions.com https://script.google.com;
+                 object-src 'none';
+                 base-uri 'self';
+                 frame-ancestors 'none';">
+
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" media="(max-width:768px)" href="css/small-screens.css" nonce="{{CSP_NONCE}}">
+  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_REAL_SITE_KEY" defer nonce="{{CSP_NONCE}}"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="business-operations.html">Business Operations</a></li>
+      <li><a href="contact-center.html">Contact Center</a></li>
+      <li><a href="it-support.html">IT Support</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="contact.html" aria-current="page">Contact Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="security.html">Security</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="form-container">
+    <form id="contact-form"
+          action="https://api.opsonlinesolutions.com/submitContact"
+          method="POST" novalidate autocomplete="off">
+
+      <input type="text" name="contact-hp" class="hp" tabindex="-1" autocomplete="off">
+
+      <div class="form-group">
+        <input type="text" id="contact-name" name="contact-name" placeholder=" " required>
+        <label for="contact-name">Your Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="contact-email" name="contact-email" placeholder=" " required>
+        <label for="contact-email">Email Address</label>
+      </div>
+
+      <div id="address-container" class="form-group">
+        <input type="text" name="contact-address[]" placeholder=" " required>
+        <label>Place your address</label>
+      </div>
+      <button type="button" id="address-container-btn" class="add-btn">+ Add address</button>
+
+      <div id="email-container" class="form-group">
+        <input type="email" name="contact-email[]" placeholder=" " required>
+        <label>Place your email</label>
+      </div>
+      <button type="button" id="email-container-btn" class="add-btn">+ Add email</button>
+
+      <div class="form-group">
+        <textarea id="contact-comments" name="contact-comments" rows="5" placeholder=" " required></textarea>
+        <label for="contact-comments">Your Message</label>
+      </div>
+
+      <input type="hidden" name="g-recaptcha-response">
+      <input type="hidden" name="client_uuid">
+      <input type="hidden" name="aes_key_b64">
+      <input type="hidden" name="hmac_sha512">
+      <input type="hidden" name="payload_nonce">
+
+      <div id="encrypting-msg" class="hide">
+        <div id="spinner"></div> Encrypting…
+      </div>
+      <div id="feedback-message"></div>
+
+      <button type="submit" class="submit-button">Send Message</button>
+    </form>
+  </div>
+</main>
+
+<footer>
+  © 2025 Ops Online Solutions
+  <nav class="footer-links">
+    <ul>
+      <li><a href="business-operations.html">Business Ops</a></li>
+      <li><a href="contact-center.html">Contact Center</a></li>
+      <li><a href="it-support.html">IT Support</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="security.html">Security</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script src="js/main.js" defer nonce="{{CSP_NONCE}}"></script>
+<script src="js/contact-handler.js" defer nonce="{{CSP_NONCE}}"></script>
+</body>
+</html>
