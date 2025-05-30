@@ -1,0 +1,35 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;background:#f5f5f5;color:#333;min-height:100vh;display:flex;flex-direction:column}
+header{background:#4b3391;color:#fff;padding:1rem 2rem}
+nav ul{list-style:none;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-weight:600;transition:opacity .2s}
+nav a:hover{opacity:.8}
+.hero{text-align:center;padding:4rem 2rem;background:#e0d8f9}
+.hero h1{font-size:2.5rem;margin-bottom:.5rem;color:#3a1d72}
+.hero p{font-size:1.2rem;color:#555}
+.hero img{width:100%;max-width:600px;margin-top:2rem;border-radius:8px}
+.services{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;padding:2rem}
+.service-item{background:#fff;border:1px solid #ddd;border-radius:8px;width:calc(25% - 1rem);min-width:200px;padding:1.5rem;text-align:center;transition:box-shadow .2s,transform .2s}
+.service-item:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-4px)}
+.service-item h3{margin-bottom:.75rem;color:#4b3391}
+.service-item p{margin-bottom:1rem;color:#555}
+.btn{background:#4b3391;color:#fff;padding:.6rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;transition:background .2s}
+.btn:hover{background:#3a1d72}
+footer{margin-top:auto;background:#3a1d72;color:#eee;text-align:center;padding:1rem;font-size:.9rem;position:relative}
+.footer-links{position:absolute;right:10px;bottom:10px}
+.footer-links ul{list-style:none;display:flex;gap:1rem;flex-wrap:wrap}
+.footer-links a{color:#eee;text-decoration:none;font-size:.8rem}
+.form-container{max-width:500px;margin:3rem auto;background:#fff;padding:2rem;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.form-group{position:relative;margin-bottom:1.5rem}
+.form-group input,.form-group textarea{width:100%;padding:.8rem;border:1px solid #ccc;border-radius:4px;background:#fff;font-size:1rem;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:#4b3391;outline:none}
+.form-group label{position:absolute;top:.8rem;left:.8rem;color:#777;font-size:1rem;background:#fff;padding:0 .25rem;pointer-events:none;transition:transform .2s,color .2s,font-size .2s}
+.form-group input:focus+label,.form-group input:not(:placeholder-shown)+label,.form-group textarea:focus+label,.form-group textarea:not(:placeholder-shown)+label{transform:translateY(-1.8rem)scale(.85);color:#4b3391;background:#f5f5f5}
+.add-btn{background:none;border:none;color:#4b3391;font-weight:600;cursor:pointer;margin-bottom:1rem}
+.submit-button{width:100%;background:#4b3391;color:#fff;padding:.8rem;font-size:1.1rem;border:none;border-radius:4px;cursor:pointer;transition:background .2s}
+.submit-button:hover{background:#3a1d72}
+#encrypting-msg{display:flex;align-items:center;gap:.5rem;margin-top:1rem;color:#4b3391}
+#encrypting-msg.hide{display:none}
+#spinner{width:20px;height:20px;border:3px solid #f3f3f3;border-top:3px solid #4b3391;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){.services{flex-direction:column}.service-item{width:100%}.hero h1{font-size:2rem}}
