@@ -19,7 +19,7 @@
   const themeBtn=$("#theme-toggle");
   const setTheme=t=>{
     document.body.classList.toggle("dark",t==="dark");
-    themeBtn.textContent=t==="dark"?"☀️":"🌙";
+    themeBtn.textContent=t==="dark"?"Dark":"Light";
     localStorage.setItem("theme",t);
   };
   themeBtn?.addEventListener("click",()=>setTheme(document.body.classList.contains("dark")?"light":"dark"));
@@ -34,6 +34,6 @@
   document.addEventListener("keydown",e=>e.key==="Escape"&&closeDrawer());
 
   /* chatbot stub */
-  $("#chat-fab")?.addEventListener("click",()=>alert("Chatbot coming soon 🚀"));
+  $("#chat-fab")?.addEventListener("click",()=>alert("Chatbot coming soon ChatBbot"));
 
 })();
