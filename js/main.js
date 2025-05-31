@@ -1,27 +1,39 @@
-document.addEventListener('DOMContentLoaded',()=>{
+// js/main.js  – shared UI (language, theme, drawer, chatbot stub)
+(()=>{
+  const $=s=>document.querySelector(s);
 
-  /* floating labels */
-  document.querySelectorAll('.form-group input, .form-group textarea')
-    .forEach(el=>{
-      if(el.value) el.classList.add('filled');
-      el.addEventListener('input',()=>el.classList.toggle('filled',!!el.value));
+  /* language toggle (EN / ES) */
+  const langBtn=$("#lang-toggle");
+  const setLang=lang=>{
+    document.documentElement.lang=lang;
+    document.querySelectorAll("[data-en]").forEach(el=>{
+      el.textContent=el.dataset[lang==="en"?"en":"es"];
     });
-
-  /* dynamic address/email controls */
-  const dyn=(sel,label)=>{
-    const box=document.querySelector(sel);
-    document.querySelector(sel+'-btn')
-      .addEventListener('click',()=>{
-        const wrap=document.createElement('div');
-        wrap.className='form-group';
-        wrap.innerHTML=`<input type="${sel.includes('address')?'text':'email'}" name="${sel.slice(1)}[]" placeholder=" " required>
-                        <label>${label}</label>
-                        <button type="button" class="add-btn rem">×</button>`;
-        wrap.querySelector('.rem').addEventListener('click',()=>wrap.remove());
-        box.append(wrap);
-      });
+    langBtn.textContent=lang==="en"?"ES":"EN";
+    localStorage.setItem("lang",lang);
   };
-  dyn('#address-container','Place your address');
-  dyn('#email-container','Place your email');
+  langBtn?.addEventListener("click",()=>setLang(document.documentElement.lang==="en"?"es":"en"));
+  setLang(localStorage.getItem("lang")||"en");
 
-});
+  /* dark / light theme */
+  const themeBtn=$("#theme-toggle");
+  const setTheme=t=>{
+    document.body.classList.toggle("dark",t==="dark");
+    themeBtn.textContent=t==="dark"?"☀️":"🌙";
+    localStorage.setItem("theme",t);
+  };
+  themeBtn?.addEventListener("click",()=>setTheme(document.body.classList.contains("dark")?"light":"dark"));
+  setTheme(localStorage.getItem("theme")||"light");
+
+  /* mobile drawer */
+  const openDrawer=()=>$("#mobile-drawer").classList.add("open");
+  const closeDrawer=()=>$("#mobile-drawer").classList.remove("open");
+  $("#menu-toggle")?.addEventListener("click",openDrawer);
+  $("#drawer-close")?.addEventListener("click",closeDrawer);
+  // close on Esc
+  document.addEventListener("keydown",e=>e.key==="Escape"&&closeDrawer());
+
+  /* chatbot stub */
+  $("#chat-fab")?.addEventListener("click",()=>alert("Chatbot coming soon 🚀"));
+
+})();
