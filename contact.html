@@ -96,18 +96,6 @@
         <label for="contact-name">Your full Name</label>
       </div>
 
-      <!-- Service Dropdown -->
-      <div class="form-group">
-        <select id="service-select" name="service-select" required>
-          <option value="" disabled selected>Select a service</option>
-          <option value="Business Operations">Business Operations</option>
-          <option value="Contact Center">Contact Center</option>
-          <option value="IT Support">IT Support</option>
-          <option value="Professionals">Professionals</option>
-        </select>
-        <label for="service-select">Select a Service</label>
-      </div>
-
       <!-- Phone Number: country prefix, area code, number -->
       <div class="form-group">
         <input type="text" id="phone-country-code" name="phone-country-code" placeholder=" " maxlength="5" pattern="^\+?\d{1,4}$" required>
@@ -149,6 +137,20 @@
       </div>
       <button type="button" id="email-container-btn" class="add-btn">+ Add email</button>
 
+
+            <!-- Service Dropdown -->
+      <div class="form-group">
+        <select id="service-select" name="service-select" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="Business Operations">Business Operations</option>
+          <option value="Contact Center">Contact Center</option>
+          <option value="IT Support">IT Support</option>
+          <option value="Professionals">Professionals</option>
+        </select>
+        <label for="service-select">Select a Service</label>
+      </div>
+
+      
       <!-- Comments -->
       <div class="form-group">
         <textarea id="contact-comments" name="contact-comments" rows="5" placeholder=" " maxlength="5000" required></textarea>
