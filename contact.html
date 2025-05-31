@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact Us – Ops Online Solutions</title>
 
   <meta http-equiv="Content-Security-Policy"
@@ -15,9 +15,55 @@
                  base-uri 'self';
                  frame-ancestors 'none';">
 
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
-  <link rel="stylesheet" media="(max-width:768px)" href="css/small-screens.css" nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
+  <link rel="stylesheet" media="(max-width:768px)" href="css/small-screens.css" nonce="{{CSP_NONCE}}" />
   <script src="https://www.google.com/recaptcha/api.js?render=YOUR_REAL_SITE_KEY" defer nonce="{{CSP_NONCE}}"></script>
+
+  <style nonce="{{CSP_NONCE}}">
+    /* Minor inline CSS for toggle switches, feel free to move to global */
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      user-select: none;
+      margin-right: 1rem;
+    }
+    .toggle-switch input[type="checkbox"] {
+      width: 40px;
+      height: 20px;
+      position: relative;
+      appearance: none;
+      background: #ccc;
+      border-radius: 20px;
+      outline: none;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .toggle-switch input[type="checkbox"]:checked {
+      background: #0078d4;
+    }
+    .toggle-switch input[type="checkbox"]::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 16px;
+      transition: left 0.3s;
+    }
+    .toggle-switch input[type="checkbox"]:checked::before {
+      left: 22px;
+    }
+    .toggle-label-bold {
+      font-weight: 700;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -40,29 +86,107 @@
   <div class="form-container">
     <form id="contact-form"
           action="https://api.opsonlinesolutions.com/submitContact"
-          method="POST" novalidate autocomplete="off">
+          method="POST"
+          novalidate
+          autocomplete="off">
 
-        <div class="form-group">
+      <!-- Name -->
+      <div class="form-group">
         <input type="text" id="contact-name" name="contact-name" placeholder=" " required>
         <label for="contact-name">Your full Name</label>
       </div>
 
+      <!-- Service Dropdown -->
+      <div class="form-group">
+        <select id="service-select" name="service-select" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="Business Operations">Business Operations</option>
+          <option value="Contact Center">Contact Center</option>
+          <option value="IT Support">IT Support</option>
+          <option value="Professionals">Professionals</option>
+        </select>
+        <label for="service-select">Select a Service</label>
+      </div>
+
+      <!-- Phone Number: country prefix, area code, number -->
+      <div class="form-group">
+        <input type="text" id="phone-country-code" name="phone-country-code" placeholder=" " maxlength="5" pattern="^\+?\d{1,4}$" required>
+        <label for="phone-country-code">Country Prefix (e.g. +1)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="phone-area-code" name="phone-area-code" placeholder=" " maxlength="5" pattern="^\d{1,5}$" required>
+        <label for="phone-area-code">Area Code</label>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" id="phone-number" name="phone-number" placeholder=" " pattern="^\d{4,15}$" required>
+        <label for="phone-number">Phone Number</label>
+      </div>
+
+      <!-- City/Town -->
+      <div class="form-group">
+        <input type="text" id="city-town" name="city-town" placeholder=" " required>
+        <label for="city-town">City / Town</label>
+      </div>
+
+      <!-- State / Province -->
+      <div class="form-group">
+        <input type="text" id="state-province" name="state-province" placeholder=" " required>
+        <label for="state-province">State / Province</label>
+      </div>
+
+      <!-- Country -->
+      <div class="form-group">
+        <input type="text" id="country" name="country" placeholder=" " required>
+        <label for="country">Country</label>
+      </div>
+
+      <!-- Email -->
       <div id="email-container" class="form-group">
         <input type="email" name="contact-email[]" placeholder=" " required>
         <label>Place your email</label>
       </div>
       <button type="button" id="email-container-btn" class="add-btn">+ Add email</button>
 
+      <!-- Comments -->
       <div class="form-group">
-        <textarea id="contact-comments" name="contact-comments" rows="5" placeholder=" " required></textarea>
+        <textarea id="contact-comments" name="contact-comments" rows="5" placeholder=" " maxlength="5000" required></textarea>
         <label for="contact-comments">Your Message</label>
       </div>
 
-      <input type="hidden" name="g-recaptcha-response">
-      <input type="hidden" name="client_uuid">
-      <input type="hidden" name="aes_key_b64">
-      <input type="hidden" name="hmac_sha512">
-      <input type="hidden" name="payload_nonce">
+      <!-- Anti-bot toggle question EN -->
+      <fieldset>
+        <legend><strong>EN</strong> I am not a bot: How freezing is the hottest day in the Saqqara Desert?</legend>
+        <label class="toggle-switch" for="ice-cream-toggle-en-incorrect">
+          <input type="checkbox" id="ice-cream-toggle-en-incorrect" name="ice-cream-toggle-en" />
+          Summer breeze (Incorrect)
+        </label>
+        <label class="toggle-switch toggle-label-bold" for="ice-cream-toggle-en-correct">
+          <input type="checkbox" id="ice-cream-toggle-en-correct" name="ice-cream-toggle-en" />
+          Ice cream (Correct)
+        </label>
+      </fieldset>
+
+      <!-- Anti-bot toggle question ES -->
+      <fieldset>
+        <legend><strong>ES</strong> No soy un bot: ¿Qué tan congelado es el día más caluroso en el Desierto de Sahara?</legend>
+        <label class="toggle-switch" for="helado-toggle-es-incorrect">
+          <input type="checkbox" id="helado-toggle-es-incorrect" name="helado-toggle-es" />
+          Dulce (Incorrecto)
+        </label>
+        <label class="toggle-switch toggle-label-bold" for="helado-toggle-es-correct">
+          <input type="checkbox" id="helado-toggle-es-correct" name="helado-toggle-es" />
+          Helado (Correcto)
+        </label>
+      </fieldset>
+
+      <!-- Hidden inputs for encryption, recaptcha etc. -->
+      <input type="hidden" name="g-recaptcha-response" />
+      <input type="hidden" name="client_uuid" />
+      <input type="hidden" name="aes_key_b64" />
+      <input type="hidden" name="hmac_sha512" />
+      <input type="hidden" name="payload_nonce" />
 
       <div id="encrypting-msg" class="hide">
         <div id="spinner"></div> Encrypting…
@@ -91,5 +215,66 @@
 
 <script src="js/main.js" defer nonce="{{CSP_NONCE}}"></script>
 <script src="js/contact-handler.js" defer nonce="{{CSP_NONCE}}"></script>
+
+<script nonce="{{CSP_NONCE}}">
+// contact-handler.js inline snippet — add your external file or inline like this
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  const feedback = document.getElementById('feedback-message');
+  const encryptingMsg = document.getElementById('encrypting-msg');
+
+  // Utility: reset all toggles to unchecked on load
+  ['ice-cream-toggle-en-incorrect', 'ice-cream-toggle-en-correct', 'helado-toggle-es-incorrect', 'helado-toggle-es-correct']
+    .forEach(id => document.getElementById(id).checked = false);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate anti-bot toggles: correct must be ON, incorrect OFF, at least in one language
+    const enCorrect = document.getElementById('ice-cream-toggle-en-correct').checked;
+    const enIncorrect = document.getElementById('ice-cream-toggle-en-incorrect').checked;
+    const esCorrect = document.getElementById('helado-toggle-es-correct').checked;
+    const esIncorrect = document.getElementById('helado-toggle-es-incorrect').checked;
+
+    const botCheckPassed =
+      (enCorrect && !enIncorrect) || (esCorrect && !esIncorrect);
+
+    if (!botCheckPassed) {
+      feedback.textContent = "Please confirm you are not a bot by selecting the correct option.";
+      feedback.style.color = '#d93025';
+      return;
+    }
+
+    // Show thank you message immediately on submit
+    feedback.textContent = "Thank you for your interest in our services. We value your time and consideration, and we will contact you as soon as possible. Have a productive but outstanding day!";
+    feedback.style.color = '#0078d4';
+
+    // Show encrypting spinner/message
+    encryptingMsg.classList.remove('hide');
+
+    // TODO: Add your encryption and form data submission logic here
+    // Simulate async operation (replace with your actual API call)
+    try {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
+      // Hide encrypting message after done
+      encryptingMsg.classList.add('hide');
+
+      // Optionally reset form here
+      form.reset();
+      // Reset toggles again to unchecked after reset
+      ['ice-cream-toggle-en-incorrect', 'ice-cream-toggle-en-correct', 'helado-toggle-es-incorrect', 'helado-toggle-es-correct']
+        .forEach(id => document.getElementById(id).checked = false);
+
+    } catch (error) {
+      feedback.textContent = "Oops, something went wrong. Please try again later.";
+      feedback.style.color = '#d93025';
+      encryptingMsg.classList.add('hide');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
