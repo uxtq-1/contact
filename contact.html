@@ -1,138 +1,72 @@
-<!-- index.html -->
+<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ops Online Solutions – Secure IT & Remote Services</title>
+  <title>Contact – Ops Online Solutions</title>
+  <meta name="description" content="Get in touch with Ops Online Solutions for secure IT and remote services.">
 
-  <!-- SEO -->
-  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing.">
-  <meta name="keywords"    content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Ops Online Solutions">
-  <meta property="og:title"       content="Ops Online Solutions">
-  <meta property="og:description" content="Secure IT support & remote services">
-  <meta property="og:image"       content="assets/images/hero.webp">
-  <meta property="og:url"         content="https://www.opsonlinesolutions.com">
-
-  <!-- JSON-LD (organization) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Ops Online Solutions",
-    "url":"https://www.opsonlinesolutions.com",
-    "logo":"https://www.opsonlinesolutions.com/assets/logo.png",
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "telephone":"+1-201-350-7567",
-      "contactType":"customer service",
-      "areaServed":"US",
-      "availableLanguage":["English","Spanish"]
-    }]
-  }
-  </script>
-
-  <!-- Strict security headers (Cloudflare/_headers file in prod) -->
-  <!--
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; frame-ancestors 'none';
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  -->
-
+  <!-- same security headers as index (served by host) -->
   <link rel="stylesheet" href="css/global.css">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/favicon.ico">
+  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
 </head>
 
 <body>
 <header>
   <a class="logo" href="index.html">OPS</a>
+  <!-- desktop nav identical to index (may extract with server-side includes if desired) -->
   <nav id="desktop-nav">
-    <a href="index.html"                data-en="Home"            data-es="Inicio">Home</a>
-    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
-    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
-    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
-    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
-    <a href="contact.html"             data-en="Contact"          data-es="Contacto">Contact</a>
+    <a href="index.html"  data-en="Home" data-es="Inicio">Home</a>
+    <a href="contact.html" class="active" data-en="Contact" data-es="Contacto">Contact</a>
   </nav>
-
   <div class="toggle-box">
-    <button id="lang-toggle"  aria-label="Toggle language">ES</button>
-    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-    <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+    <button id="lang-toggle">ES</button>
+    <button id="theme-toggle">🌙</button>
+    <button id="menu-toggle" class="hamburger">☰</button>
   </div>
 </header>
 
-<!-- Mobile drawer (hidden on ≥769 px via CSS) -->
 <nav id="mobile-drawer" class="drawer" aria-hidden="true">
-  <button id="drawer-close" aria-label="Close">✕</button>
-  <a href="index.html"                data-en="Home"          data-es="Inicio">Home</a>
-  <a href="business-operations.html"  data-en="Operations"     data-es="Gestión">Operations</a>
-  <a href="contact-center.html"       data-en="Contact Center" data-es="Centro">Contact Center</a>
-  <a href="it-support.html"           data-en="IT Support"     data-es="Soporte IT">IT Support</a>
-  <a href="professionals.html"        data-en="Professionals"  data-es="Profesionales">Professionals</a>
-  <a href="contact.html"              data-en="Contact"        data-es="Contacto">Contact</a>
+  <!-- same links as index -->
+  <button id="drawer-close">✕</button>
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
 </nav>
 
 <main id="main">
-  <section class="hero">
-    <h1 data-en="Empowering Secure Remote Solutions"
-        data-es="Potenciando Soluciones Remotas Seguras">
-      Empowering Secure Remote Solutions
-    </h1>
-    <p data-en="Cutting-edge strategies for operations, IT, and CX."
-       data-es="Estrategias de vanguardia para operaciones, IT y CX.">
-      Cutting-edge strategies for operations, IT, and CX.
-    </p>
-    <img src="assets/images/hero-800.webp"
-         srcset="assets/images/hero-400.webp 400w,
-                 assets/images/hero-800.webp 800w,
-                 assets/images/hero-1200.webp 1200w"
-         sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
-         alt="Technicians collaborating remotely"
-         loading="lazy">
-  </section>
+  <h1 data-en="Contact Us" data-es="Contáctenos">Contact Us</h1>
 
-  <section class="services">
-    <article class="card">
-      <h2 data-en="Operations"  data-es="Gestión">Operations</h2>
-      <p  data-en="Optimize workflows with data-driven dispatch."
-          data-es="Optimiza flujos con despacho basado en datos.">
-          Optimize workflows with data-driven dispatch.
-      </p>
-      <a class="btn" href="business-operations.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-    <article class="card">
-      <h2 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h2>
-      <p  data-en="Elevate CX with multilingual, AI-assisted agents."
-          data-es="Eleva CX con agentes IA multilingües.">
-          Elevate CX with multilingual, AI-assisted agents.
-      </p>
-      <a class="btn" href="contact-center.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-    <article class="card">
-      <h2 data-en="IT Support" data-es="Soporte IT">IT Support</h2>
-      <p  data-en="Rugged, 24/7 secure IT for hybrid teams."
-          data-es="IT seguro 24/7 para equipos híbridos.">
-          Rugged, 24/7 secure IT for hybrid teams.
-      </p>
-      <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-  </section>
+  <form id="contact-form" novalidate>
+    <div class="field">
+      <label for="name"  data-en="Name"  data-es="Nombre">Name</label>
+      <input id="name" name="name" type="text" required placeholder="John Doe">
+    </div>
+
+    <div class="field">
+      <label for="email" data-en="Email" data-es="Correo">Email</label>
+      <input id="email" name="email" type="email" required placeholder="john@example.com">
+    </div>
+
+    <div class="field">
+      <label for="message" data-en="Message" data-es="Mensaje">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+
+    <!-- honeypot -->
+    <input type="text" name="hp" class="hp" autocomplete="off">
+
+    <p id="encrypting-msg" class="status hide" data-en="Encrypting…" data-es="Encriptando…">Encrypting…</p>
+    <p id="feedback-msg"   class="status"></p>
+
+    <button type="submit" class="btn" data-en="Send" data-es="Enviar">Send</button>
+  </form>
 </main>
 
-<!-- Floating action buttons -->
-<div class="fab-box">
-  <button id="chat-fab"   class="fab" aria-label="Chatbot">💬</button>
-  <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">➕</a>
-  <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉️</a>
-</div>
+<footer>© 2025 Ops Online Solutions</footer>
 
-<footer>
-  © 2025 Ops Online Solutions
-</footer>
-
-<script src="js/main.js" defer></script>
+<script src="js/main.js"           defer></script>
+<script src="js/contact-handler.js" defer></script>
 </body>
 </html>
