@@ -1,281 +1,138 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contact Us – Ops Online Solutions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ops Online Solutions – Secure IT & Remote Services</title>
 
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 script-src 'self' 'nonce-{{CSP_NONCE}}' https://www.google.com https://www.gstatic.com;
-                 style-src  'self' 'nonce-{{CSP_NONCE}}' https://cdnjs.cloudflare.com;
-                 img-src    'self' data:;
-                 connect-src 'self' https://api.opsonlinesolutions.com https://script.google.com;
-                 object-src 'none';
-                 base-uri 'self';
-                 frame-ancestors 'none';">
+  <!-- SEO -->
+  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing.">
+  <meta name="keywords"    content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Ops Online Solutions">
+  <meta property="og:title"       content="Ops Online Solutions">
+  <meta property="og:description" content="Secure IT support & remote services">
+  <meta property="og:image"       content="assets/images/hero.webp">
+  <meta property="og:url"         content="https://www.opsonlinesolutions.com">
 
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
-  <link rel="stylesheet" media="(max-width:768px)" href="css/small-screens.css" nonce="{{CSP_NONCE}}" />
-  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_REAL_SITE_KEY" defer nonce="{{CSP_NONCE}}"></script>
+  <!-- JSON-LD (organization) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Ops Online Solutions",
+    "url":"https://www.opsonlinesolutions.com",
+    "logo":"https://www.opsonlinesolutions.com/assets/logo.png",
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "telephone":"+1-201-350-7567",
+      "contactType":"customer service",
+      "areaServed":"US",
+      "availableLanguage":["English","Spanish"]
+    }]
+  }
+  </script>
 
-  <style nonce="{{CSP_NONCE}}">
-    /* Minor inline CSS for toggle switches, feel free to move to global */
-    .toggle-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      cursor: pointer;
-      user-select: none;
-      margin-right: 1rem;
-    }
-    .toggle-switch input[type="checkbox"] {
-      width: 40px;
-      height: 20px;
-      position: relative;
-      appearance: none;
-      background: #ccc;
-      border-radius: 20px;
-      outline: none;
-      transition: background 0.3s;
-      cursor: pointer;
-    }
-    .toggle-switch input[type="checkbox"]:checked {
-      background: #0078d4;
-    }
-    .toggle-switch input[type="checkbox"]::before {
-      content: "";
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 16px;
-      height: 16px;
-      background: white;
-      border-radius: 16px;
-      transition: left 0.3s;
-    }
-    .toggle-switch input[type="checkbox"]:checked::before {
-      left: 22px;
-    }
-    .toggle-label-bold {
-      font-weight: 700;
-    }
-    .hide {
-      display: none;
-    }
-  </style>
+  <!-- Strict security headers (Cloudflare/_headers file in prod) -->
+  <!--
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; frame-ancestors 'none';
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  -->
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
 </head>
-<body>
 
+<body>
 <header>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="business-operations.html">Business Operations</a></li>
-      <li><a href="contact-center.html">Contact Center</a></li>
-      <li><a href="it-support.html">IT Support</a></li>
-      <li><a href="professionals.html">Professionals</a></li>
-      <li><a href="contact.html" aria-current="page">Contact Us</a></li>
-      <li><a href="join.html">Join Us</a></li>
-      <li><a href="security.html">Security</a></li>
-    </ul>
+  <a class="logo" href="index.html">OPS</a>
+  <nav id="desktop-nav">
+    <a href="index.html"                data-en="Home"            data-es="Inicio">Home</a>
+    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
+    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
+    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
+    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
+    <a href="contact.html"             data-en="Contact"          data-es="Contacto">Contact</a>
   </nav>
+
+  <div class="toggle-box">
+    <button id="lang-toggle"  aria-label="Toggle language">ES</button>
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+  </div>
 </header>
 
-<main>
-  <div class="form-container">
-    <form id="contact-form"
-          action="https://api.opsonlinesolutions.com/submitContact"
-          method="POST"
-          novalidate
-          autocomplete="off">
+<!-- Mobile drawer (hidden on ≥769 px via CSS) -->
+<nav id="mobile-drawer" class="drawer" aria-hidden="true">
+  <button id="drawer-close" aria-label="Close">✕</button>
+  <a href="index.html"                data-en="Home"          data-es="Inicio">Home</a>
+  <a href="business-operations.html"  data-en="Operations"     data-es="Gestión">Operations</a>
+  <a href="contact-center.html"       data-en="Contact Center" data-es="Centro">Contact Center</a>
+  <a href="it-support.html"           data-en="IT Support"     data-es="Soporte IT">IT Support</a>
+  <a href="professionals.html"        data-en="Professionals"  data-es="Profesionales">Professionals</a>
+  <a href="contact.html"              data-en="Contact"        data-es="Contacto">Contact</a>
+</nav>
 
-      <!-- Name -->
-      <div class="form-group">
-        <input type="text" id="contact-name" name="contact-name" placeholder=" " required>
-        <label for="contact-name">Your full Name</label>
-      </div>
+<main id="main">
+  <section class="hero">
+    <h1 data-en="Empowering Secure Remote Solutions"
+        data-es="Potenciando Soluciones Remotas Seguras">
+      Empowering Secure Remote Solutions
+    </h1>
+    <p data-en="Cutting-edge strategies for operations, IT, and CX."
+       data-es="Estrategias de vanguardia para operaciones, IT y CX.">
+      Cutting-edge strategies for operations, IT, and CX.
+    </p>
+    <img src="assets/images/hero-800.webp"
+         srcset="assets/images/hero-400.webp 400w,
+                 assets/images/hero-800.webp 800w,
+                 assets/images/hero-1200.webp 1200w"
+         sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
+         alt="Technicians collaborating remotely"
+         loading="lazy">
+  </section>
 
-      <!-- Phone Number: country prefix, area code, number -->
-      <div class="form-group">
-        <input type="text" id="phone-country-code" name="phone-country-code" placeholder=" " maxlength="5" pattern="^\+?\d{1,4}$" required>
-        <label for="phone-country-code">Country Prefix (e.g. +1)</label>
-      </div>
-
-      <div class="form-group">
-        <input type="text" id="phone-area-code" name="phone-area-code" placeholder=" " maxlength="5" pattern="^\d{1,5}$" required>
-        <label for="phone-area-code">Area Code</label>
-      </div>
-
-      <div class="form-group">
-        <input type="tel" id="phone-number" name="phone-number" placeholder=" " pattern="^\d{4,15}$" required>
-        <label for="phone-number">Phone Number</label>
-      </div>
-
-      <!-- City/Town -->
-      <div class="form-group">
-        <input type="text" id="city-town" name="city-town" placeholder=" " required>
-        <label for="city-town">City / Town</label>
-      </div>
-
-      <!-- State / Province -->
-      <div class="form-group">
-        <input type="text" id="state-province" name="state-province" placeholder=" " required>
-        <label for="state-province">State / Province</label>
-      </div>
-
-      <!-- Country -->
-      <div class="form-group">
-        <input type="text" id="country" name="country" placeholder=" " required>
-        <label for="country">Country</label>
-      </div>
-
-      <!-- Email -->
-      <div id="email-container" class="form-group">
-        <input type="email" name="contact-email[]" placeholder=" " required>
-        <label>Place your email</label>
-      </div>
-      <button type="button" id="email-container-btn" class="add-btn">+ Add email</button>
-
-
-            <!-- Service Dropdown -->
-      <div class="form-group">
-        <select id="service-select" name="service-select" required>
-          <option value="" disabled selected>Select a service</option>
-          <option value="Business Operations">Business Operations</option>
-          <option value="Contact Center">Contact Center</option>
-          <option value="IT Support">IT Support</option>
-          <option value="Professionals">Professionals</option>
-        </select>
-      </div>
-
-      
-      <!-- Comments -->
-      <div class="form-group">
-        <textarea id="contact-comments" name="contact-comments" rows="5" placeholder=" " maxlength="5000" required></textarea>
-        <label for="contact-comments">Your Message</label>
-      </div>
-
-      <!-- Anti-bot toggle question EN -->
-      <fieldset>
-        <legend><strong>EN</strong> I am not a bot: How freezing is the hottest day in the Saqqara Desert?</legend>
-        <label class="toggle-switch" for="ice-cream-toggle-en-incorrect">
-          <input type="checkbox" id="ice-cream-toggle-en-incorrect" name="ice-cream-toggle-en" />
-          Summer breeze (Incorrect)
-        </label>
-        <label class="toggle-switch toggle-label-bold" for="ice-cream-toggle-en-correct">
-          <input type="checkbox" id="ice-cream-toggle-en-correct" name="ice-cream-toggle-en" />
-          Ice cream (Correct)
-        </label>
-      </fieldset>
-
-      <!-- Anti-bot toggle question ES -->
-      <fieldset>
-        <legend><strong>ES</strong> No soy un bot: ¿Qué tan congelado es el día más caluroso en el Desierto de Sahara?</legend>
-        <label class="toggle-switch" for="helado-toggle-es-incorrect">
-          <input type="checkbox" id="helado-toggle-es-incorrect" name="helado-toggle-es" />
-          Dulce (Incorrecto)
-        </label>
-        <label class="toggle-switch toggle-label-bold" for="helado-toggle-es-correct">
-          <input type="checkbox" id="helado-toggle-es-correct" name="helado-toggle-es" />
-          Helado (Correcto)
-        </label>
-      </fieldset>
-
-      <!-- Hidden inputs for encryption, recaptcha etc. -->
-      <input type="hidden" name="g-recaptcha-response" />
-      <input type="hidden" name="client_uuid" />
-      <input type="hidden" name="aes_key_b64" />
-      <input type="hidden" name="hmac_sha512" />
-      <input type="hidden" name="payload_nonce" />
-
-      <div id="encrypting-msg" class="hide">
-        <div id="spinner"></div> Encrypting…
-      </div>
-      <div id="feedback-message"></div>
-
-      <button type="submit" class="submit-button">Send Message</button>
-    </form>
-  </div>
+  <section class="services">
+    <article class="card">
+      <h2 data-en="Operations"  data-es="Gestión">Operations</h2>
+      <p  data-en="Optimize workflows with data-driven dispatch."
+          data-es="Optimiza flujos con despacho basado en datos.">
+          Optimize workflows with data-driven dispatch.
+      </p>
+      <a class="btn" href="business-operations.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+    </article>
+    <article class="card">
+      <h2 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h2>
+      <p  data-en="Elevate CX with multilingual, AI-assisted agents."
+          data-es="Eleva CX con agentes IA multilingües.">
+          Elevate CX with multilingual, AI-assisted agents.
+      </p>
+      <a class="btn" href="contact-center.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+    </article>
+    <article class="card">
+      <h2 data-en="IT Support" data-es="Soporte IT">IT Support</h2>
+      <p  data-en="Rugged, 24/7 secure IT for hybrid teams."
+          data-es="IT seguro 24/7 para equipos híbridos.">
+          Rugged, 24/7 secure IT for hybrid teams.
+      </p>
+      <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+    </article>
+  </section>
 </main>
+
+<!-- Floating action buttons -->
+<div class="fab-box">
+  <button id="chat-fab"   class="fab" aria-label="Chatbot">💬</button>
+  <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">➕</a>
+  <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉️</a>
+</div>
 
 <footer>
   © 2025 Ops Online Solutions
-  <nav class="footer-links">
-    <ul>
-      <li><a href="business-operations.html">Business Ops</a></li>
-      <li><a href="contact-center.html">Contact Center</a></li>
-      <li><a href="it-support.html">IT Support</a></li>
-      <li><a href="professionals.html">Professionals</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="join.html">Join Us</a></li>
-      <li><a href="security.html">Security</a></li>
-    </ul>
-  </nav>
 </footer>
 
-<script src="js/main.js" defer nonce="{{CSP_NONCE}}"></script>
-<script src="js/contact-handler.js" defer nonce="{{CSP_NONCE}}"></script>
-
-<script nonce="{{CSP_NONCE}}">
-// contact-handler.js inline snippet — add your external file or inline like this
-
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contact-form');
-  const feedback = document.getElementById('feedback-message');
-  const encryptingMsg = document.getElementById('encrypting-msg');
-
-  // Utility: reset all toggles to unchecked on load
-  ['ice-cream-toggle-en-incorrect', 'ice-cream-toggle-en-correct', 'helado-toggle-es-incorrect', 'helado-toggle-es-correct']
-    .forEach(id => document.getElementById(id).checked = false);
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Validate anti-bot toggles: correct must be ON, incorrect OFF, at least in one language
-    const enCorrect = document.getElementById('ice-cream-toggle-en-correct').checked;
-    const enIncorrect = document.getElementById('ice-cream-toggle-en-incorrect').checked;
-    const esCorrect = document.getElementById('helado-toggle-es-correct').checked;
-    const esIncorrect = document.getElementById('helado-toggle-es-incorrect').checked;
-
-    const botCheckPassed =
-      (enCorrect && !enIncorrect) || (esCorrect && !esIncorrect);
-
-    if (!botCheckPassed) {
-      feedback.textContent = "Please confirm you are not a bot by selecting the correct option.";
-      feedback.style.color = '#d93025';
-      return;
-    }
-
-    // Show thank you message immediately on submit
-    feedback.textContent = "Thank you for your interest in our services. We value your time and consideration, and we will contact you as soon as possible. Have a productive but outstanding day!";
-    feedback.style.color = '#0078d4';
-
-    // Show encrypting spinner/message
-    encryptingMsg.classList.remove('hide');
-
-    // TODO: Add your encryption and form data submission logic here
-    // Simulate async operation (replace with your actual API call)
-    try {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-
-      // Hide encrypting message after done
-      encryptingMsg.classList.add('hide');
-
-      // Optionally reset form here
-      form.reset();
-      // Reset toggles again to unchecked after reset
-      ['ice-cream-toggle-en-incorrect', 'ice-cream-toggle-en-correct', 'helado-toggle-es-incorrect', 'helado-toggle-es-correct']
-        .forEach(id => document.getElementById(id).checked = false);
-
-    } catch (error) {
-      feedback.textContent = "Oops, something went wrong. Please try again later.";
-      feedback.style.color = '#d93025';
-      encryptingMsg.classList.add('hide');
-    }
-  });
-});
-</script>
-
+<script src="js/main.js" defer></script>
 </body>
 </html>
