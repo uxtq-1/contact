@@ -4,6 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ops Online Solutions – Secure IT & Remote Services</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing.">
+  <meta name="keywords"    content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Ops Online Solutions">
+  <meta property="og:title"       content="Ops Online Solutions">
+  <meta property="og:description" content="Secure IT support & remote services">
+  <meta property="og:image"       content="assets/images/hero.webp">
+  <meta property="og:url"         content="https://www.opsonlinesolutions.com">
+
+  <!-- JSON-LD (organization) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Ops Online Solutions",
+    "url":"https://www.opsonlinesolutions.com",
+    "logo":"https://www.opsonlinesolutions.com/assets/logo.png",
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "telephone":"+1-201-350-7567",
+      "contactType":"customer service",
+      "areaServed":"US",
+      "availableLanguage":["English","Spanish"]
+    }]
+  }
+  </script>
+
+  <!-- Strict security headers (Cloudflare/_headers file in prod) -->
+  <!--
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; frame-ancestors 'none';
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  -->
+
   <title>Contact – Ops Online Solutions</title>
   <meta name="description" content="Get in touch with Ops Online Solutions for secure IT and remote services.">
 
@@ -19,6 +56,11 @@
   <!-- desktop nav identical to index (may extract with server-side includes if desired) -->
   <nav id="desktop-nav">
     <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
+    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
+    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
+    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
+    <a href="contact.html"             data-en="Contact"          data-es="Contacto">Contact</a>
     <a href="contact.html" class="active" data-en="Contact" data-es="Contacto">Contact</a>
   </nav>
   <div class="toggle-box">
@@ -28,12 +70,21 @@
   </div>
 </header>
 
-<nav id="mobile-drawer" class="drawer" aria-hidden="true">
+  <!-- Mobile drawer (hidden on ≥769 px via CSS) -->
   <!-- same links as index -->
   <button id="drawer-close">✕</button>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a>
+<nav id="mobile-drawer" class="drawer" aria-hidden="true">
+  <button id="drawer-close" aria-label="Close">✕</button>
+  <a href="index.html"                data-en="Home"          data-es="Inicio">Home</a>
+  <a href="business-operations.html"  data-en="Operations"     data-es="Gestión">Operations</a>
+  <a href="contact-center.html"       data-en="Contact Center" data-es="Centro">Contact Center</a>
+  <a href="it-support.html"           data-en="IT Support"     data-es="Soporte IT">IT Support</a>
+  <a href="professionals.html"        data-en="Professionals"  data-es="Profesionales">Professionals</a>
+  <a href="contact.html"              data-en="Contact"        data-es="Contacto">Contact</a>
 </nav>
+    <!-- =====================================================================
+                                      Contact-Form
+      ====================================================================== -->
 
 <main id="main">
   <h1 data-en="Contact Us" data-es="Enlázate">Contact Us</h1>
@@ -64,9 +115,12 @@
         data-es="juan@ejemplo.com"
       >
     </div>
-
+    <!-- =====================================================================
+                                      Services
+      ====================================================================== -->
+    
     <div class="field">
-      <label for="service" data-en="Service Type" data-es="Tipo de Servicio">Service Type</label>
+      <label for="service" data-en="Service Inquiry" data-es="Consultas de Servicio">Service Inquiry</label>
       <select id="service" name="service" required>
         <option value="" disabled selected data-en="Select a service" data-es="Seleccione un servicio">
           Select a service
@@ -105,8 +159,22 @@
     <button type="submit" class="btn" data-en="Send" data-es="Enviar">Send</button>
   </form>
 </main>
+    <!-- ======================================================================
+                         Floating action buttons
+      ====================================================================== -->
+<div class="fab-box">
+  <button id="chat-fab"   class="fab" aria-label="Chatbot">Chatbot</button>
+  <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">Join</a>
+  <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉</a>
+</div>
 
-<footer>© 2025 Ops Online Solutions</footer>
+  <!-- ======================================================================
+                             Footer Section
+    ====================================================================== -->
+
+    <footer>
+      <p>&copy; 2025 OPS Solutions Services. All rights reserved.</p>
+    </footer>
 
 <script src="js/main.js" defer></script>
 <script src="js/contact-handler.js" defer></script>
