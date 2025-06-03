@@ -1,21 +1,26 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <!-- Primary Title & SEO Metas -->
   <title>Ops Online Solutions – Secure IT & Remote Services</title>
+  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing under a rigorous cybersecurity framework.">
+  <meta name="keywords" content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Cybersecurity, NIST, PCI DSS">
+  <meta name="robots" content="index,follow">
+  <!-- Google Site Verification (replace with your token) -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
+  
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Ops Online Solutions">
+  <meta property="og:description" content="Secure IT support & remote services governed by NIST/CISA/PCI DSS standards.">
+  <meta property="og:image" content="assets/images/hero.webp">
+  <meta property="og:url" content="https://www.opsonlinesolutions.com">
+  <meta property="og:type" content="website">
 
-  <!-- SEO -->
-  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing.">
-  <meta name="keywords"    content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Ops Online Solutions">
-  <meta property="og:title"       content="Ops Online Solutions">
-  <meta property="og:description" content="Secure IT support & remote services">
-  <meta property="og:image"       content="assets/images/hero.webp">
-  <meta property="og:url"         content="https://www.opsonlinesolutions.com">
-
-  <!-- JSON-LD (organization) -->
+  <!-- JSON-LD Organization Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -23,140 +28,138 @@
     "name":"Ops Online Solutions",
     "url":"https://www.opsonlinesolutions.com",
     "logo":"https://www.opsonlinesolutions.com/assets/logo.png",
-    "contactPoint":[{
-      "@type":"ContactPoint",
-      "telephone":"+1-201-350-7567",
-      "contactType":"customer service",
-      "areaServed":"US",
-      "availableLanguage":["English","Spanish"]
-    }]
+    "contactPoint":[
+      {
+        "@type":"ContactPoint",
+        "telephone":"+1-201-350-7567",
+        "contactType":"customer service",
+        "areaServed":"US",
+        "availableLanguage":["English","Spanish"]
+      }
+    ]
   }
   </script>
 
-  <!-- Strict security headers (Cloudflare/_headers file in prod) -->
+  <!-- Content Security Policy (example, enforce via Cloudflare/_headers in production) -->
   <!--
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; frame-ancestors 'none';
+  Content-Security-Policy:
+    default-src 'self';
+    img-src 'self' data: https:;
+    font-src 'self' https:;
+    script-src 'self' 'nonce-{{CSP_NONCE}}';
+    style-src 'self' 'nonce-{{CSP_NONCE}}';
+    connect-src 'self' https://script.google.com https://YOUR_CLOUDFLARE_WORKER_DOMAIN;
+    frame-ancestors 'none';
+    form-action 'self';
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   -->
 
-  <!-- Global Styles (already in your project) -->
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
+  <!-- Join/Contact Shared CSS (form styles, buttons, etc.) -->
+  <link rel="stylesheet" href="css/join.css" nonce="{{CSP_NONCE}}">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
 
-  <!-- Join Form Styles -->
-  <link rel="stylesheet" href="css/join.css" nonce="{{CSP_NONCE}}" />
-  
-  <link rel="icon" href="assets/favicon.ico">
-  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
 </head>
 
 <body>
-<header>
-  <a class="logo" href="index.html">OPS</a>
-  <nav id="desktop-nav">
-    <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
-    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
-    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
-    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
-    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
-    <a href="contact.html"             data-en="Contact"          data-es="Enlázate">Contact</a>
-    <a href="join.html"                data-en="Join"             data-es=" Únete">Join</a>
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="index.html">OPS</a>
+    <nav id="desktop-nav">
+      <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
+      <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
+      <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
+      <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
+      <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
+      <a href="contact.html"             data-en="Contact"          data-es="Enlázate">Contact</a>
+      <a href="join.html"                data-en="Join"             data-es="Únete">Join</a>
+    </nav>
+    <div class="toggle-box">
+      <button id="lang-toggle"  aria-label="Toggle language">ES</button>
+      <button id="theme-toggle" aria-label="Toggle theme">Light</button>
+      <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <nav id="mobile-drawer" class="drawer" aria-hidden="true">
+    <button id="drawer-close" aria-label="Close">✕</button>
+    <a href="index.html"               data-en="Home"           data-es="Inicio">Home</a>
+    <a href="business-operations.html" data-en="Operations"     data-es="Gestión">Operations</a>
+    <a href="contact-center.html"      data-en="Contact Center" data-es="Centro">Contact Center</a>
+    <a href="it-support.html"          data-en="IT Support"     data-es="Soporte IT">IT Support</a>
+    <a href="professionals.html"       data-en="Professionals"  data-es="Profesionales">Professionals</a>
+    <a href="contact.html"             data-en="Contact"        data-es="Enlázate">Contact</a>
+    <a href="join.html"                data-en="Join"           data-es="Únete">Join</a>
   </nav>
 
-  <div class="toggle-box">
-    <button id="lang-toggle"  aria-label="Toggle language">ES</button>
-    <button id="theme-toggle" aria-label="Toggle theme">Light</button>
-    <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
-  </div>
-</header>
+  <!-- MAIN CONTENT -->
+  <main id="main">
+    <section class="hero">
+      <h1 data-en="Empowering Secure Remote Solutions" data-es="Potenciando Soluciones Remotas Seguras">
+        Empowering Secure Remote Solutions
+      </h1>
+      <p data-en="Cutting-edge strategies for operations, IT, and CX." data-es="Estrategias de vanguardia para operaciones, IT y CX.">
+        Cutting-edge strategies for operations, IT, and CX.
+      </p>
+      <!-- Lazy-load Hero Image with responsive srcset -->
+      <img 
+        src="assets/images/hero-400.webp" 
+        srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero-1200.webp 1200w" 
+        sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px" 
+        alt="Technicians collaborating remotely" 
+        loading="lazy">
+    </section>
 
-<!-- Mobile drawer (hidden on ≥769 px via CSS) -->
-<nav id="mobile-drawer" class="drawer" aria-hidden="true">
-  <button id="drawer-close" aria-label="Close">✕</button>
-  <a href="index.html"                data-en="Home"           data-es="Inicio">Home</a>
-  <a href="business-operations.html"  data-en="Operations"     data-es="Gestión">Operations</a>
-  <a href="contact-center.html"       data-en="Contact Center" data-es="Centro">Contact Center</a>
-  <a href="it-support.html"           data-en="IT Support"     data-es="Soporte IT">IT Support</a>
-  <a href="professionals.html"        data-en="Professionals"  data-es="Profesionales">Professionals</a>
-  <a href="contact.html"              data-en="Contact"        data-es="Enlázate">Contact</a>
-  <a href="join.html"                 data-en="Join"           data-es=" Únete">Join</a>
-</nav>
-
-<main id="main">
-  <section class="hero">
-    <h1 data-en="Empowering Secure Remote Solutions"
-        data-es="Potenciando Soluciones Remotas Seguras">
-      Empowering Secure Remote Solutions
-    </h1>
-    <p data-en="Cutting-edge strategies for operations, IT, and CX."
-       data-es="Estrategias de vanguardia para operaciones, IT y CX.">
-      Cutting-edge strategies for operations, IT, and CX.
-    </p>
-    <img src="assets/images/hero-800.webp"
-         srcset="assets/images/hero-400.webp 400w,
-                 assets/images/hero-800.webp 800w,
-                 assets/images/hero-1200.webp 1200w"
-         sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
-         alt="Technicians collaborating remotely"
-         loading="lazy">
-  </section>
-
-  <section class="services">
-    <article class="card">
-      <h2 data-en="Operations"  data-es="Gestión">Operations</h2>
-      <p  data-en="Optimize workflows with data-driven dispatch."
-          data-es="Optimiza flujos con despacho basado en datos.">
+    <section class="services">
+      <article class="card">
+        <h2 data-en="Operations"  data-es="Gestión">Operations</h2>
+        <p data-en="Optimize workflows with data-driven dispatch." data-es="Optimiza flujos con despacho basado en datos.">
           Optimize workflows with data-driven dispatch.
-      </p>
-      <a class="btn" href="business-operations.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-    <article class="card">
-      <h2 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h2>
-      <p  data-en="Elevate CX with multilingual, AI-assisted agents."
-          data-es="Eleva CX con agentes IA multilingües.">
+        </p>
+        <a class="btn" href="business-operations.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+      </article>
+      <article class="card">
+        <h2 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h2>
+        <p data-en="Elevate CX with multilingual, AI-assisted agents." data-es="Eleva CX con agentes IA multilingües.">
           Elevate CX with multilingual, AI-assisted agents.
-      </p>
-      <a class="btn" href="contact-center.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-    <article class="card">
-      <h2 data-en="IT Support" data-es="Soporte IT">IT Support</h2>
-      <p  data-en="Rugged, 24/7 secure IT for hybrid teams."
-          data-es="IT seguro 24/7 para equipos híbridos.">
+        </p>
+        <a class="btn" href="contact-center.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+      </article>
+      <article class="card">
+        <h2 data-en="IT Support" data-es="Soporte IT">IT Support</h2>
+        <p data-en="Rugged, 24/7 secure IT for hybrid teams." data-es="IT seguro 24/7 para equipos híbridos.">
           Rugged, 24/7 secure IT for hybrid teams.
-      </p>
-      <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-    <article class="card">
-      <h2 data-en="Professionals" data-es="Professionales">Professionals</h2>
-      <p  data-en="Rugged, 24/7 secure IT for hybrid teams."
-          data-es="Accede a profesionales de primer nivel para las necesidades de tu negocio.">
+        </p>
+        <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+      </article>
+      <article class="card">
+        <h2 data-en="Professionals" data-es="Profesionales">Professionals</h2>
+        <p data-en="Access top-tier professionals for your business needs." data-es="Accede a profesionales de primer nivel para tu negocio.">
           Access top-tier professionals for your business needs.
-      </p>
-      <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
-    </article>
-  </section>
-</main>
+        </p>
+        <a class="btn" href="professionals.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+      </article>
+    </section>
+  </main>
 
-<!-- Floating action buttons -->
-<div class="fab-box">
-  <button id="chat-fab"   class="fab" aria-label="Chatbot">Chatbot</button>
-  <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">Join</a>
-  <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉</a>
-</div>
+  <!-- FLOATING ACTION BUTTONS -->
+  <div class="fab-box">
+    <button id="chat-fab"   class="fab" aria-label="Chatbot">💬</button>
+    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">➕</a>
+    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉</a>
+  </div>
 
-  <!-- ======================================================================
-                             Footer Section
-    ====================================================================== -->
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 OPS Solutions Services. All rights reserved.</p>
+  </footer>
 
-    <footer>
-      <p>&copy; 2025 OPS Solutions Services. All rights reserved.</p>
-    </footer>
-
-  <!-- Shared UI/Language/Theme Script -->
+  <!-- SHARED SCRIPTS -->
   <script src="js/main.js" nonce="{{CSP_NONCE}}" defer></script>
-  <!-- Join Form Logic -->
-  <script src="js/join.js" nonce="{{CSP_NONCE}}" defer></script>
 </body>
 </html>
