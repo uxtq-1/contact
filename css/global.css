@@ -47,7 +47,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:.75
 form{max-width:560px;margin-inline:auto;padding:1.5rem}
 .field{display:flex;flex-direction:column;margin-bottom:1rem}
 .field label{margin-bottom:.25rem;font-weight:600}
-.field input,.field textarea{border:1px solid #ccc;border-radius:.5rem;padding:.5rem}
+.field input,.field textarea,.field select{border:1px solid #ccc;border-radius:.5rem;padding:.5rem}
 .btn{background:var(--primary);color:#fff;border:none;padding:.5rem 1rem;border-radius:.5rem;cursor:pointer}
 .status{margin:.75rem 0;font-weight:600}
 .hide{display:none}
