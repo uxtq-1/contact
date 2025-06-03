@@ -1,10 +1,46 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-en="Join Us" data-es="Únete a Nosotros">Join Us</title>
+  <title>Ops Online Solutions – Secure IT & Remote Services</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Ops Online Solutions delivers secure IT support, remote contact-center services, and professional outsourcing.">
+  <meta name="keywords"    content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Ops Online Solutions">
+  <meta property="og:title"       content="Ops Online Solutions">
+  <meta property="og:description" content="Secure IT support & remote services">
+  <meta property="og:image"       content="assets/images/hero.webp">
+  <meta property="og:url"         content="https://www.opsonlinesolutions.com">
+
+  <!-- JSON-LD (organization) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Ops Online Solutions",
+    "url":"https://www.opsonlinesolutions.com",
+    "logo":"https://www.opsonlinesolutions.com/assets/logo.png",
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "telephone":"+1-201-350-7567",
+      "contactType":"customer service",
+      "areaServed":"US",
+      "availableLanguage":["English","Spanish"]
+    }]
+  }
+  </script>
+
+  <!-- Strict security headers (Cloudflare/_headers file in prod) -->
+  <!--
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https:; frame-ancestors 'none';
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  -->
 
   <!-- Global Styles (already in your project) -->
   <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
@@ -14,11 +50,36 @@
 </head>
 
 <body>
-  <!-- Language & Theme Toggles (from your shared JS) -->
-  <header class="header">
-    <button id="lang-toggle" class="toggle-btn">ES</button>
-    <button id="theme-toggle" class="toggle-btn">Light</button>
-  </header>
+<header>
+  <a class="logo" href="index.html">OPS</a>
+  <nav id="desktop-nav">
+    <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
+    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
+    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
+    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
+    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
+    <a href="contact.html"             data-en="Contact"          data-es="Enlázate">Contact</a>
+    <a href="join.html"                data-en="Join"             data-es=" Únete">Join</a>
+  </nav>
+
+  <div class="toggle-box">
+    <button id="lang-toggle"  aria-label="Toggle language">ES</button>
+    <button id="theme-toggle" aria-label="Toggle theme">Light</button>
+    <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+  </div>
+</header>
+
+<!-- Mobile drawer (hidden on ≥769 px via CSS) -->
+<nav id="mobile-drawer" class="drawer" aria-hidden="true">
+  <button id="drawer-close" aria-label="Close">✕</button>
+  <a href="index.html"                data-en="Home"           data-es="Inicio">Home</a>
+  <a href="business-operations.html"  data-en="Operations"     data-es="Gestión">Operations</a>
+  <a href="contact-center.html"       data-en="Contact Center" data-es="Centro">Contact Center</a>
+  <a href="it-support.html"           data-en="IT Support"     data-es="Soporte IT">IT Support</a>
+  <a href="professionals.html"        data-en="Professionals"  data-es="Profesionales">Professionals</a>
+  <a href="contact.html"              data-en="Contact"        data-es="Enlázate">Contact</a>
+  <a href="join.html"                 data-en="Join"           data-es=" Únete">Join</a>
+</nav>
 
   <main class="container">
     <h1 class="title" data-en="Join Us" data-es="Únete a Nosotros">Join Us</h1>
