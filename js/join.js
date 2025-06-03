@@ -2,33 +2,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('join-form');
-  const addButtons = document.querySelectorAll('.add-btn');
   const thankYouContainer = document.getElementById('thank-you');
   const progressFill = thankYouContainer.querySelector('.progress-fill');
 
-  // 1. Dynamic “+” to clone fields
-  addButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const fieldKey = btn.getAttribute('data-field');
-      const group = document.querySelector(`.multi-field[data-field="${fieldKey}"] .field-row`);
-      const newRow = group.cloneNode(true);
-
-      // Clear the input/textarea inside the clone
-      const inputOrTextarea = newRow.querySelector('input, textarea');
-      inputOrTextarea.value = '';
-
-      // Re-attach listener to the cloned “+” button
-      const newBtn = newRow.querySelector('.add-btn');
-      newBtn.addEventListener('click', () => {
-        btn.click(); // delegate to original logic
-      });
-
-      group.parentElement.insertBefore(newRow, group.nextSibling);
-    });
-  });
-
-  // 2. Language switch for placeholders/labels (already handled by main.js),
-  //    but we need to ensure placeholders update on load:
+  // ----- LANGUAGE HANDLER -----
   function updateTextByLang() {
     const currentLang = document.documentElement.lang;
     // Update placeholders for all inputs & textareas
@@ -36,13 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
       el.placeholder = text;
     });
-    // Update labels and the submit button
+    // Update labels, buttons, title, and thank-you message
     document.querySelectorAll('[data-en][data-es]').forEach((el) => {
-      if (el.tagName.toLowerCase() === 'label' || el.tagName.toLowerCase() === 'button' || el.tagName.toLowerCase() === 'title' || el.tagName.toLowerCase() === 'h1') {
+      if (
+        el.tagName.toLowerCase() === 'label' ||
+        el.tagName.toLowerCase() === 'button' ||
+        el.tagName.toLowerCase() === 'h1' ||
+        el.tagName.toLowerCase() === 'title'
+      ) {
         const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
         el.textContent = text;
       }
-      // Update thank-you message text
       if (el.id === 'thank-you') {
         const msg = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
         el.childNodes[0].nodeValue = msg;
@@ -50,28 +31,88 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Initial language setup
   updateTextByLang();
   document.getElementById('lang-toggle').addEventListener('click', updateTextByLang);
 
-  // 3. Form submission handler
+
+  // ----- ADD / REMOVE FIELD LOGIC -----
+  function handleAddClick(fieldKey) {
+    // Find the multi-field container by data-field
+    const multiField = document.querySelector(`.multi-field[data-field="${fieldKey}"]`);
+    if (!multiField) return;
+
+    // Clone the first .field-row inside this container
+    const firstRow = multiField.querySelector('.field-row');
+    if (!firstRow) return;
+
+    const newRow = firstRow.cloneNode(true);
+    // Clear values in cloned inputs/textareas
+    newRow.querySelectorAll('input, textarea').forEach((el) => {
+      el.value = '';
+    });
+
+    // Attach add/remove listeners on the cloned row
+    const newAddBtn = newRow.querySelector('.add-btn');
+    const newRemoveBtn = newRow.querySelector('.remove-btn');
+
+    newAddBtn.addEventListener('click', () => handleAddClick(fieldKey));
+    newRemoveBtn.addEventListener('click', () => handleRemoveClick(fieldKey, newRow));
+
+    // Insert the cloned row right after the last .field-row in this multi-field
+    const lastRow = multiField.querySelectorAll('.field-row');
+    lastRow[lastRow.length - 1].after(newRow);
+
+    // Update placeholders/labels in the newly added row for current language
+    updateTextByLang();
+  }
+
+  function handleRemoveClick(fieldKey, rowElement) {
+    const multiField = document.querySelector(`.multi-field[data-field="${fieldKey}"]`);
+    if (!multiField) return;
+
+    const allRows = multiField.querySelectorAll('.field-row');
+    // Only remove if more than one row remains
+    if (allRows.length > 1) {
+      rowElement.remove();
+    }
+    // (Optional) else: you could flash a tooltip or shake effect indicating at least one is required
+  }
+
+  // Attach add/remove to all existing buttons
+  document.querySelectorAll('.add-btn').forEach((btn) => {
+    const fieldKey = btn.getAttribute('data-field');
+    btn.addEventListener('click', () => handleAddClick(fieldKey));
+  });
+
+  document.querySelectorAll('.remove-btn').forEach((btn) => {
+    const fieldKey = btn.getAttribute('data-field');
+    // Find the parent .field-row for this remove button
+    const rowElem = btn.closest('.field-row');
+    btn.addEventListener('click', () => handleRemoveClick(fieldKey, rowElem));
+  });
+
+
+  // ----- FORM SUBMISSION -----
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // 3a. Hide the form and show the “Thank You / progress” container
-    form.querySelectorAll('input, textarea, button').forEach((el) => {
+    // Disable all inputs/buttons
+    form.querySelectorAll('input, textarea, select, button').forEach((el) => {
       el.disabled = true;
     });
-    thankYouContainer.hidden = false;
 
-    // 3b. Animate progress bar
+    // Show thank-you + progress bar
+    thankYouContainer.hidden = false;
     setTimeout(() => {
       progressFill.style.width = '100%';
     }, 100);
 
-    // 3c. Gather all form data into a JSON object
+    // Gather all form data into a JSON object
     const formData = new FormData(form);
     const payload = {};
     formData.forEach((value, key) => {
+      // Handle array fields (fields ending in [])
       if (key.endsWith('[]')) {
         const baseKey = key.replace('[]', '');
         if (!payload[baseKey]) payload[baseKey] = [];
@@ -81,16 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 3d. At this point you'd:
-    //   • perform client-side encryption (AES-GCM or HMAC logic),
-    //   • send payload to Apps Script / Cloudflare Worker endpoint.
-    //   • For demo, we simply log to console:
-
     console.log('Collected payload →', payload);
-
-    // Example: send to your endpoint (uncomment & customize when ready)
+    // TODO: insert encryption/HMAC here, then POST to your endpoint
     /*
-    fetch('https://your-cloudflare-worker-or-apps-script-url', {
+    fetch('https://your-endpoint-url', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -98,13 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       body: JSON.stringify(payload),
     })
-      .then((res) => res.json())
-      .then((resp) => {
-        console.log('Server response:', resp);
-      })
-      .catch((err) => {
-        console.error('Error sending join data:', err);
-      });
+    .then(res => res.json())
+    .then(resp => console.log('Server response:', resp))
+    .catch(err => console.error('Error:', err));
     */
   });
 });
