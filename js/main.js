@@ -6,9 +6,25 @@
   const langBtn=$("#lang-toggle");
   const setLang=lang=>{
     document.documentElement.lang=lang;
-    document.querySelectorAll("[data-en]").forEach(el=>{
-      el.textContent=el.dataset[lang==="en"?"en":"es"];
+
+    // Swap textContent for labels/buttons/headers
+    document.querySelectorAll("[data-en][data-es]").forEach(el=>{
+      // If it’s not an input/select/textarea, update textContent
+      if (!["INPUT","TEXTAREA","SELECT","OPTION"].includes(el.tagName)) {
+        el.textContent=el.dataset[lang];
+      }
     });
+
+    // Swap placeholder for inputs and textareas
+    document.querySelectorAll("input[data-en][data-es], textarea[data-en][data-es]").forEach(el=>{
+      el.placeholder=el.dataset[lang];
+    });
+
+    // Swap <option> text
+    document.querySelectorAll("option[data-en][data-es]").forEach(el=>{
+      el.textContent=el.dataset[lang];
+    });
+
     langBtn.textContent=lang==="en"?"ES":"EN";
     localStorage.setItem("lang",lang);
   };
