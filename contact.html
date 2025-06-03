@@ -45,7 +45,11 @@
   <meta name="description" content="Get in touch with Ops Online Solutions for secure IT and remote services.">
 
   <!-- same security headers as index (served by host) -->
-  <link rel="stylesheet" href="css/global.css">
+    <!-- Global Styles (already in your project) -->
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
+
+  <!-- Join Form Styles -->
+  <link rel="stylesheet" href="css/join.css" nonce="{{CSP_NONCE}}" />
   <link rel="icon" href="assets/favicon.ico">
   <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
 </head>
