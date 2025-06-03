@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Ops Online Solutions – Secure IT & Remote Services</title>
 
   <!-- SEO -->
@@ -41,21 +42,24 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   -->
 
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <!-- Global Styles (already in your project) -->
+  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}" />
+
+  <!-- Join Form Styles -->
+  <link rel="stylesheet" href="css/join.css" nonce="{{CSP_NONCE}}" />
 </head>
 
 <body>
 <header>
   <a class="logo" href="index.html">OPS</a>
   <nav id="desktop-nav">
-    <a href="index.html"                data-en="Home"            data-es="Inicio">Home</a>
-    <a href="business-operations.html"  data-en="Operations"       data-es="Gestión">Operations</a>
-    <a href="contact-center.html"       data-en="Contact Center"   data-es="Centro">Contact Center</a>
-    <a href="it-support.html"           data-en="IT Support"       data-es="Soporte IT">IT Support</a>
-    <a href="professionals.html"        data-en="Professionals"    data-es="Profesionales">Professionals</a>
-    <a href="contact.html"              data-en="Contact"          data-es="Enlázate">Contact</a>
-    <a href="join.html"                 data-en="Join"             data-es=" Únete">Join</a>
+    <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
+    <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
+    <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
+    <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
+    <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
+    <a href="contact.html"             data-en="Contact"          data-es="Enlázate">Contact</a>
+    <a href="join.html"                data-en="Join"             data-es=" Únete">Join</a>
   </nav>
 
   <div class="toggle-box">
