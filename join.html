@@ -33,9 +33,19 @@
 
   <!-- CSP (Cloudflare/_headers) – same strict policy as index.html -->
 
+   <!-- CSP comments (strict, same as index) -->
+
   <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
   <link rel="stylesheet" href="css/join.css"   nonce="{{CSP_NONCE}}">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <!-- Font Awesome (latest) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pY1H4i9kqJ3lyE6N8Tq3khI1+7DxyG7xgHLRWofvFhYBDF3pKPt+UJ3Fd8YhrZ1F2Cfxt9hWvqn6wuK1QvAzHg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+/>
 
   <!-- reCAPTCHA v3 -->
   <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
