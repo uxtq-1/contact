@@ -1,109 +1,90 @@
-// js/contact-handler.js  – secure, lazy-crypto form submission
-// js/contact-handler.js  – secure, lazy-crypto Contact form submission
-
+// js/contact-handler.js  – Simplified for serverless function processing
 (() => {
   const form = document.getElementById("contact-form");
   if (!form) return;
 
-  const enc = new TextEncoder();
-  const toB64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
   const clean = s => s.replace(/<[^>]*>/g, "").trim();
   const uuid = () => crypto.randomUUID();
   const iso = () => new Date().toISOString();
-
-  /* AES-GCM 256 */
-  const newKey = () => crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, ["encrypt"]);
-  const exportKey = k => crypto.subtle.exportKey("raw", k).then(toB64);
-
-  /* HMAC-SHA-512 */
-  async function hmac(data, secret) {
-    const key = await crypto.subtle.importKey(
-      "raw",
-      enc.encode(secret),
-      { name: "HMAC", hash: "SHA-512" },
-      false,
-      ["sign"]
-    );
-    const sig = await crypto.subtle.sign("HMAC", key, enc.encode(data));
-    return Array.from(new Uint8Array(sig))
-      .map(b => b.toString(16).padStart(2, "0"))
-      .join("");
-  }
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
     if (!form.checkValidity()) return form.reportValidity();
     if (form.hp && form.hp.value) return; // honeypot
 
-    document.getElementById("encrypting-msg").classList.remove("hide");
+    const submitButton = form.querySelector("button[type='submit']");
+    const feedbackMsg = document.getElementById("feedback-msg");
+    const encryptingMsg = document.getElementById("encrypting-msg"); // Assuming this element might be repurposed or hidden
+
+    encryptingMsg.classList.remove("hide"); // Indicate processing
+    submitButton.disabled = true;
+    feedbackMsg.textContent = "";
+
 
     // reCAPTCHA v3
-    let token = "";
+    let recaptchaToken = "";
     try {
-      token = await grecaptcha.execute("YOUR_SITE_KEY", { action: "contact" });
-    } catch {
-      alert("reCAPTCHA error");
+      // Ensure grecaptcha is loaded and site key is correctly configured in HTML
+      if (typeof grecaptcha === 'undefined' || !grecaptcha.execute) {
+        throw new Error("reCAPTCHA library not loaded.");
+      }
+      // The reCAPTCHA Site Key should be in the HTML (data-recaptcha-site-key attribute on the form)
+      const siteKey = form.dataset.recaptchaSiteKey || "YOUR_RECAPTCHA_V3_SITE_KEY_HERE"; // Fallback
+      if (siteKey === "YOUR_RECAPTCHA_V3_SITE_KEY_HERE") {
+        console.warn("reCAPTCHA Site Key is using a placeholder value. Configure in HTML: <form data-recaptcha-site-key='YOUR_ACTUAL_KEY'> and the script tag.");
+      }
+      recaptchaToken = await grecaptcha.execute(siteKey, { action: "contact" });
+    } catch(err) {
+      console.error("reCAPTCHA execution error:", err);
+      feedbackMsg.textContent = "reCAPTCHA error. Please try again.";
+      encryptingMsg.classList.add("hide");
+      submitButton.disabled = false;
       return;
     }
 
-    const key = await newKey();
-    const keyB64 = await exportKey(key);
-    const iv = crypto.getRandomValues(new Uint8Array(12));
-    const ivB64 = toB64(iv);
-
     // Build plaintext object
-    const plain = {
+    const formData = {
       id: uuid(),
       ts: iso(),
       name: clean(form.name.value),
       email: clean(form.email.value),
       service: clean(form.service.value),
-      msg: clean(form.message.value)
+      msg: clean(form.message.value),
+      recaptchaToken: recaptchaToken // Include reCAPTCHA token
     };
 
-    // Encrypt plaintext
-    const cipher = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(JSON.stringify(plain)));
-    const blobB64 = toB64(cipher);
-
-    // Metadata
-    const meta = { iv: ivB64, key: keyB64, recaptcha: token };
-    const sig = await hmac(JSON.stringify(meta) + blobB64, "CLIENT_SIDE_SECRET"); // replace
-
     try {
-      const res = await fetch("https://script.google.com/macros/s/YOUR_ID/exec", {
+      const res = await fetch("https://YOUR_SERVERLESS_FUNCTION_ENDPOINT/contact", { // Placeholder URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest"
+          "X-Requested-With": "XMLHttpRequest" // Common header, optional
         },
-        body: JSON.stringify({ meta, blob: blobB64, hmac: sig })
+        body: JSON.stringify(formData)
       });
-      const ok = res.ok;
-      document.getElementById("feedback-msg").textContent = ok
-        ? "Thank you – we’ll reply soon."
-        : "Error, please retry.";
-      if (ok) form.reset();
+
+      const responseData = await res.json(); // Assuming serverless function returns JSON
+
+      if (res.ok) {
+        feedbackMsg.textContent = responseData.message || "Thank you – we’ll reply soon.";
+        form.reset();
+      } else {
+        feedbackMsg.textContent = responseData.message || "Error, please retry.";
+      }
     } catch (err) {
-      document.getElementById("feedback-msg").textContent = "Network error.";
+      console.error("Form submission error:", err);
+      feedbackMsg.textContent = "Network error. Please try again.";
     } finally {
-      document.getElementById("encrypting-msg").classList.add("hide");
+      encryptingMsg.classList.add("hide");
+      submitButton.disabled = false;
     }
   });
 
-  // ----- LANGUAGE HANDLER FOR CONTACT FORM -----
-  function updateTextByLang() {
-    const currentLang = document.documentElement.lang;
-    // placeholders
-    document.querySelectorAll("input[data-en][data-es], textarea[data-en][data-es]").forEach(el => {
-      el.placeholder = el.dataset[currentLang];
-    });
-    // text nodes (labels, buttons)
-    document.querySelectorAll("[data-en][data-es]").forEach(el => {
-      if (!["INPUT", "TEXTAREA", "SELECT", "OPTION"].includes(el.tagName)) {
-        el.textContent = el.dataset[currentLang];
-      }
-    });
-  }
-  updateTextByLang();
-  document.getElementById("lang-toggle")?.addEventListener("click", updateTextByLang);
+  // Language handling is now centralized in js/main.js
+  // The setAppLang() function in main.js will handle initial language setup
+  // and updates when the lang-toggle button is clicked.
+  // If this script dynamically added new translatable content
+  // that wasn't present at page load, one would call:
+  // if (window.setAppLang) { window.setAppLang(document.documentElement.lang); }
+  // after adding such content. For this form, elements are static.
 })();

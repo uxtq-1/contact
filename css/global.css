@@ -294,6 +294,17 @@ body.dark .btn, body.dark .fab { background: #bb86fc; }
   .services { flex-direction: column; }
 }
 
+/* Specific overrides for smaller screens, can be merged or kept separate */
+@media (max-width: 480px) {
+  .add-btn, .remove-btn { /* Applied to both for consistency */
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 1rem;
+  }
+  /* Adjust .submit-btn if join.css is fully merged and this is needed globally */
+  /* .submit-btn { font-size: 1rem; } */
+}
+
 /* PRINT-FRIENDLY */
 @media print {
   header, .fab-box { display: none; }

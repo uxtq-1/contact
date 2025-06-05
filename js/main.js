@@ -5,7 +5,8 @@
 
   /* LANGUAGE TOGGLE (EN / ES) */
   const langBtn = $("#lang-toggle");
-  const setLang = lang => {
+  // Expose setLang globally for other scripts to call if needed (e.g., after dynamic content load)
+  window.setAppLang = lang => {
     document.documentElement.lang = lang;
 
     // Swap textContent for elements with data-en / data-es
@@ -30,8 +31,9 @@
     localStorage.setItem("lang", lang);
   };
   if (langBtn) {
-    langBtn.addEventListener("click", () => setLang(document.documentElement.lang === "en" ? "es" : "en"));
-    setLang(localStorage.getItem("lang") || "en");
+    langBtn.addEventListener("click", () => window.setAppLang(document.documentElement.lang === "en" ? "es" : "en"));
+    // Initial language set
+    window.setAppLang(localStorage.getItem("lang") || "en");
   }
 
   /* THEME TOGGLE (LIGHT / DARK) */

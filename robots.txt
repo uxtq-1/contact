@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /js/contact_form_processor_design.js
+Disallow: /js/join_form_processor_design.js
+Disallow: /repository_review.md
+Disallow: /contact_form_processor_design.js
+Disallow: /join_form_processor_design.js
+
+Sitemap: [YOUR_FULL_DOMAIN]/sitemap.xml
