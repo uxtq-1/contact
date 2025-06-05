@@ -10,8 +10,9 @@
   <meta name="description" content="Join Ops Online Solutions: secure IT, contact center, operations, and professional outsourcing under NIST, CISA, PCI DSS compliance.">
   <meta name="keywords" content="Join, Secure IT, Outsourcing, Contact Center, NIST, PCI DSS">
   <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://YOUR_SERVERLESS_FUNCTION_ENDPOINT_DOMAIN_HERE https://script.google.com; form-action 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self';">
 
-  <!-- JSON-LD Organization Schema (same as index) -->
+  <!-- JSON-LD Organization Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -26,17 +27,21 @@
         "contactType":"customer service",
         "areaServed":"US",
         "availableLanguage":["English","Spanish"]
+      },
+      {
+        "@type":"ContactPoint",
+        "telephone":"+1-201-350-7567", // Assuming same number for tech support
+        "contactType":"technical support",
+        "areaServed":"US",
+        "availableLanguage":["English","Spanish"]
       }
     ]
   }
   </script>
+  <!-- Note: WebSite schema is usually only on the main index.html -->
 
-  <!-- CSP (Cloudflare/_headers) – same strict policy as index.html -->
-
-   <!-- CSP comments (strict, same as index) -->
-
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
-  <link rel="stylesheet" href="css/join.css"   nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/join.css">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <!-- Font Awesome (latest) -->
   <link
@@ -47,15 +52,16 @@
     referrerpolicy="no-referrer"
 />
 
-  <!-- reCAPTCHA v3 -->
-  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script>
+  <!-- TODO: Replace YOUR_RECAPTCHA_V3_SITE_KEY_HERE with your actual Google reCAPTCHA v3 Site Key -->
+  <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_V3_SITE_KEY_HERE" async defer></script>
 </head>
 
 <body>
   <!-- HEADER (same as index) -->
   <header>
-    <a class="logo" href="index.html">OPS</a>
-    <nav id="desktop-nav">
+    <a class="logo" href="index.html" aria-label="Ops Online Solutions Home">OPS</a>
+    <nav id="desktop-nav" aria-label="Main navigation">
+      <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
       <a href="index.html"               data-en="Home"          data-es="Inicio">Home</a>
       <a href="business-operations.html" data-en="Operations"    data-es="Gestión">Operations</a>
       <a href="contact-center.html"      data-en="Contact Center"data-es="Centro">Contact Center</a>
@@ -72,8 +78,9 @@
   </header>
 
   <!-- MOBILE DRAWER (same as index) -->
-  <nav id="mobile-drawer" class="drawer" aria-hidden="true">
-    <button id="drawer-close" aria-label="Close">✕</button>
+  <nav id="mobile-drawer" class="drawer" aria-hidden="true" aria-label="Mobile navigation">
+    <button id="drawer-close" aria-label="Close mobile menu">✕</button>
+    <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
     <a href="index.html"               data-en="Home"           data-es="Inicio">Home</a>
     <a href="business-operations.html" data-en="Operations"     data-es="Gestión">Operations</a>
     <a href="contact-center.html"      data-en="Contact Center" data-es="Centro">Contact Center</a>
@@ -86,7 +93,8 @@
   <main class="container">
     <h1 class="title" data-en="Join Us" data-es="Únete">Join Us</h1>
 
-    <form id="join-form" novalidate>
+    <!-- TODO: Replace YOUR_RECAPTCHA_V3_SITE_KEY_HERE in data-recaptcha-site-key with your actual Google reCAPTCHA v3 Site Key -->
+    <form id="join-form" novalidate data-recaptcha-site-key="YOUR_RECAPTCHA_V3_SITE_KEY_HERE">
       <!-- Honeypot for bot protection -->
       <input type="text" name="hp" style="display:none;" tabindex="-1">
 
@@ -181,8 +189,8 @@
             data-en="e.g., Senior Developer"
             data-es="ej., Desarrollador Senior"
           >
-          <button type="button" class="add-btn"    data-field="job_titles">＋</button>
-          <button type="button" class="remove-btn" data-field="job_titles">−</button>
+          <button type="button" class="add-btn"    data-field="job_titles" aria-label="Add job title">＋</button>
+          <button type="button" class="remove-btn" data-field="job_titles" aria-label="Remove job title">−</button>
         </div>
       </div>
 
@@ -198,8 +206,8 @@
             data-en="You can copy-paste your summary"
             data-es="Puedes copiar y pegar tu resumen"
           ></textarea>
-          <button type="button" class="add-btn"    data-field="prof_summary">＋</button>
-          <button type="button" class="remove-btn" data-field="prof_summary">−</button>
+          <button type="button" class="add-btn"    data-field="prof_summary" aria-label="Add professional summary item">＋</button>
+          <button type="button" class="remove-btn" data-field="prof_summary" aria-label="Remove professional summary item">−</button>
         </div>
       </div>
 
@@ -215,8 +223,8 @@
             data-en="You can copy-paste your experience"
             data-es="Puedes copiar y pegar tu experiencia"
           ></textarea>
-          <button type="button" class="add-btn"    data-field="experience">＋</button>
-          <button type="button" class="remove-btn" data-field="experience">−</button>
+          <button type="button" class="add-btn"    data-field="experience" aria-label="Add experience item">＋</button>
+          <button type="button" class="remove-btn" data-field="experience" aria-label="Remove experience item">−</button>
         </div>
       </div>
 
@@ -232,8 +240,8 @@
             data-en="e.g., JavaScript, Python"
             data-es="ej., JavaScript, Python"
           >
-          <button type="button" class="add-btn"    data-field="skills">＋</button>
-          <button type="button" class="remove-btn" data-field="skills">−</button>
+          <button type="button" class="add-btn"    data-field="skills" aria-label="Add skill">＋</button>
+          <button type="button" class="remove-btn" data-field="skills" aria-label="Remove skill">−</button>
         </div>
       </div>
 
@@ -245,6 +253,7 @@
             type="date"
             name="education_date[]"
             required
+            aria-label="Education end date"
           >
           <input
             type="text"
@@ -253,9 +262,10 @@
             placeholder=""
             data-en="e.g., B.S. in Computer Science"
             data-es="ej., Licenciatura en Informática"
+            aria-label="Education description"
           >
-          <button type="button" class="add-btn"    data-field="education">＋</button>
-          <button type="button" class="remove-btn" data-field="education">−</button>
+          <button type="button" class="add-btn"    data-field="education" aria-label="Add education item">＋</button>
+          <button type="button" class="remove-btn" data-field="education" aria-label="Remove education item">−</button>
         </div>
       </div>
 
@@ -267,6 +277,7 @@
             type="date"
             name="certifications_date[]"
             required
+            aria-label="Certification date"
           >
           <input
             type="text"
@@ -275,9 +286,10 @@
             placeholder=""
             data-en="e.g., A+, Network+"
             data-es="ej., A+, Network+"
+            aria-label="Certification description"
           >
-          <button type="button" class="add-btn"    data-field="certifications">＋</button>
-          <button type="button" class="remove-btn" data-field="certifications">−</button>
+          <button type="button" class="add-btn"    data-field="certifications" aria-label="Add certification">＋</button>
+          <button type="button" class="remove-btn" data-field="certifications" aria-label="Remove certification">−</button>
         </div>
       </div>
 
@@ -293,8 +305,8 @@
             data-en="Describe a project"
             data-es="Describe un proyecto"
           >
-          <button type="button" class="add-btn"    data-field="projects">＋</button>
-          <button type="button" class="remove-btn" data-field="projects">−</button>
+          <button type="button" class="add-btn"    data-field="projects" aria-label="Add project">＋</button>
+          <button type="button" class="remove-btn" data-field="projects" aria-label="Remove project">−</button>
         </div>
       </div>
 
@@ -310,8 +322,8 @@
             data-en="e.g., Reading, Hiking"
             data-es="ej., Lectura, Senderismo"
           >
-          <button type="button" class="add-btn"    data-field="hobbies">＋</button>
-          <button type="button" class="remove-btn" data-field="hobbies">−</button>
+          <button type="button" class="add-btn"    data-field="hobbies" aria-label="Add hobby">＋</button>
+          <button type="button" class="remove-btn" data-field="hobbies" aria-label="Remove hobby">−</button>
         </div>
       </div>
 
@@ -339,10 +351,10 @@
   </main>
 
   <!-- FABs & Footer (same as index) -->
-  <div class="fab-box">
-    <button id="chat-fab"   class="fab" aria-label="Chatbot">💬</button>
-    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">➕</a>
-    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉</a>
+  <div class="fab-box" role="toolbar" aria-label="Quick actions">
+    <button id="chat-fab"   class="fab" aria-label="Open chatbot">💬</button>
+    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team">➕</a>
+    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us">✉</a>
   </div>
 
   <footer>
@@ -350,7 +362,7 @@
   </footer>
 
   <!-- SHARED SCRIPTS -->
-  <script src="js/main.js"            nonce="{{CSP_NONCE}}" defer></script>
-  <script src="js/join-handler.js"    nonce="{{CSP_NONCE}}" defer></script>
+  <script src="js/main.js"            defer></script>
+  <script src="js/join-handler.js"    defer></script>
 </body>
 </html>

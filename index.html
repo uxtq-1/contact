@@ -12,6 +12,7 @@
   <meta name="robots" content="index,follow">
   <!-- Google Site Verification (replace with your token) -->
   <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://YOUR_SERVERLESS_FUNCTION_ENDPOINT_DOMAIN_HERE https://script.google.com; form-action 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self';">
   
   <!-- Open Graph for Social Sharing -->
   <meta property="og:title" content="Ops Online Solutions">
@@ -21,7 +22,7 @@
   <meta property="og:type" content="website">
 
   <!-- JSON-LD Organization Schema -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" nonce="{{CSP_NONCE}}">
   {
     "@context":"https://schema.org",
     "@type":"Organization",
@@ -35,35 +36,36 @@
         "contactType":"customer service",
         "areaServed":"US",
         "availableLanguage":["English","Spanish"]
+      },
+      {
+        "@type":"ContactPoint",
+        "telephone":"+1-201-350-7567", // Assuming same number for tech support
+        "contactType":"technical support",
+        "areaServed":"US",
+        "availableLanguage":["English","Spanish"]
       }
     ]
   }
   </script>
-
-  <!-- Content Security Policy (example, enforce via Cloudflare/_headers in production) -->
-  <!--
-  Content-Security-Policy:
-    default-src 'self';
-    img-src 'self' data: https:;
-    font-src 'self' https:;
-    script-src 'self' 'nonce-{{CSP_NONCE}}';
-    style-src 'self' 'nonce-{{CSP_NONCE}}';
-    connect-src 'self' https://script.google.com https://YOUR_CLOUDFLARE_WORKER_DOMAIN;
-    frame-ancestors 'none';
-    form-action 'self';
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  -->
+  <!-- JSON-LD WebSite Schema -->
+  <script type="application/ld+json" nonce="{{CSP_NONCE}}">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ops Online Solutions",
+    "url": "https://www.opsonlinesolutions.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.opsonlinesolutions.com/search?q={search_term_string}", // Replace with actual search URL if available
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 
   <!-- Global CSS -->
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" href="css/global.css">
   <!-- Join/Contact Shared CSS (form styles, buttons, etc.) -->
-  <link rel="stylesheet" href="css/join.css" nonce="{{CSP_NONCE}}">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="stylesheet" href="css/global.css" nonce="{{CSP_NONCE}}">
-  <link rel="stylesheet" href="css/join.css"   nonce="{{CSP_NONCE}}">
+  <link rel="stylesheet" href="css/join.css">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <!-- Font Awesome (latest) -->
   <link
@@ -78,8 +80,9 @@
 <body>
   <!-- HEADER -->
   <header>
-    <a class="logo" href="index.html">OPS</a>
-    <nav id="desktop-nav">
+    <a class="logo" href="index.html" aria-label="Ops Online Solutions Home">OPS</a>
+    <nav id="desktop-nav" aria-label="Main navigation">
+      <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
       <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
       <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
       <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
@@ -96,8 +99,9 @@
   </header>
 
   <!-- MOBILE DRAWER -->
-  <nav id="mobile-drawer" class="drawer" aria-hidden="true">
-    <button id="drawer-close" aria-label="Close">✕</button>
+  <nav id="mobile-drawer" class="drawer" aria-hidden="true" aria-label="Mobile navigation">
+    <button id="drawer-close" aria-label="Close mobile menu">✕</button>
+    <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
     <a href="index.html"               data-en="Home"           data-es="Inicio">Home</a>
     <a href="business-operations.html" data-en="Operations"     data-es="Gestión">Operations</a>
     <a href="contact-center.html"      data-en="Contact Center" data-es="Centro">Contact Center</a>
@@ -118,50 +122,51 @@
       </p>
       <!-- Lazy-load Hero Image with responsive srcset -->
       <img 
-        src="assets/images/hero-400.webp" 
-        srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero-1200.webp 1200w" 
-        sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px" 
-        alt="Technicians collaborating remotely" 
+        src="assets/images/hero-400.webp"
+        srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero-1200.webp 1200w"
+        sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
+        alt="Technicians collaborating remotely using laptops and headsets in a modern office environment."
         loading="lazy">
     </section>
 
-    <section class="services">
+    <section class="services" aria-labelledby="services-heading">
+      <h2 id="services-heading" class="visually-hidden" data-en="Our Services" data-es="Nuestros Servicios">Our Services</h2> <!-- Visually hidden heading for section landmark -->
       <article class="card">
-        <h2 data-en="Operations"  data-es="Gestión">Operations</h2>
+        <h3><a href="business-operations.html" class="card-link" data-en="Operations"  data-es="Gestión">Operations</a></h3>
         <p data-en="Optimize workflows with data-driven dispatch." data-es="Optimiza flujos con despacho basado en datos.">
           Optimize workflows with data-driven dispatch.
         </p>
-        <a class="btn" href="business-operations.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+        <a class="btn" href="business-operations.html" data-en="Learn More about Operations" data-es="Saber más sobre Gestión">Learn More</a>
       </article>
       <article class="card">
-        <h2 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h2>
+        <h3><a href="contact-center.html" class="card-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a></h3>
         <p data-en="Elevate CX with multilingual, AI-assisted agents." data-es="Eleva CX con agentes IA multilingües.">
           Elevate CX with multilingual, AI-assisted agents.
         </p>
-        <a class="btn" href="contact-center.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+        <a class="btn" href="contact-center.html" data-en="Learn More about Contact Center" data-es="Saber más sobre Centro de Contacto">Learn More</a>
       </article>
       <article class="card">
-        <h2 data-en="IT Support" data-es="Soporte IT">IT Support</h2>
+        <h3><a href="it-support.html" class="card-link" data-en="IT Support" data-es="Soporte IT">IT Support</a></h3>
         <p data-en="Rugged, 24/7 secure IT for hybrid teams." data-es="IT seguro 24/7 para equipos híbridos.">
           Rugged, 24/7 secure IT for hybrid teams.
         </p>
-        <a class="btn" href="it-support.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+        <a class="btn" href="it-support.html" data-en="Learn More about IT Support" data-es="Saber más sobre Soporte IT">Learn More</a>
       </article>
       <article class="card">
-        <h2 data-en="Professionals" data-es="Profesionales">Professionals</h2>
+        <h3><a href="professionals.html" class="card-link" data-en="Professionals" data-es="Profesionales">Professionals</a></h3>
         <p data-en="Access top-tier professionals for your business needs." data-es="Accede a profesionales de primer nivel para tu negocio.">
           Access top-tier professionals for your business needs.
         </p>
-        <a class="btn" href="professionals.html" data-en="Learn More" data-es="Saber más">Learn More</a>
+        <a class="btn" href="professionals.html" data-en="Learn More about Professionals" data-es="Saber más sobre Profesionales">Learn More</a>
       </article>
     </section>
   </main>
 
   <!-- FLOATING ACTION BUTTONS -->
-  <div class="fab-box">
-    <button id="chat-fab"   class="fab" aria-label="Chatbot">💬</button>
-    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join">➕</a>
-    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact">✉</a>
+  <div class="fab-box" role="toolbar" aria-label="Quick actions">
+    <button id="chat-fab"   class="fab" aria-label="Open chatbot">💬</button>
+    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team">➕</a>
+    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us">✉</a>
   </div>
 
   <!-- FOOTER -->
@@ -170,6 +175,6 @@
   </footer>
 
   <!-- SHARED SCRIPTS -->
-  <script src="js/main.js" nonce="{{CSP_NONCE}}" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
