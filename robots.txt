@@ -7,4 +7,4 @@ Disallow: /repository_review.md
 Disallow: /contact_form_processor_design.js
 Disallow: /join_form_processor_design.js
 
-Sitemap: [YOUR_FULL_DOMAIN]/sitemap.xml
+Sitemap: https://www.opsonlinesupport.com/sitemap.xml
