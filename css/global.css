@@ -116,6 +116,14 @@ header {
   font-size: 1.1rem;
 }
 
+/* SECTION TITLE (used for "Our Services", etc.) */
+.section-title {
+  text-align: center;
+  font-size: 1.8rem; /* Example size */
+  color: var(--primary-dark); /* Example color */
+  margin-bottom: 1.5rem; /* Example spacing */
+}
+
 /* CARDS/SERVICES */
 .services {
   display: flex;

@@ -5,7 +5,7 @@
 // - TARGET_HR_EMAIL_ADDRESS: Email address for sending new application notifications.
 // - EMAIL_SERVICE_API_KEY: API key for your chosen email service (e.g., SendGrid, Brevo).
 // - DATABASE_CONNECTION_STRING: Or other DB connection params (e.g., for Firestore, DynamoDB).
-// - (Optional) CORS_ALLOWED_ORIGIN: The domain of your website (e.g., https://www.opsonlinesupport.com)
+// - (Optional) CORS_ALLOWED_ORIGIN: The domain of your website (e.g., https://www.opsonlinesolutions.com)
 // - (Optional) FILE_STORAGE_BUCKET_NAME: Name of the GCS/S3 bucket for resume uploads.
 
 // Dependencies (conceptual):
