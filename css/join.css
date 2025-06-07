@@ -12,6 +12,26 @@
   margin-bottom: 1rem;
 }
 
+/* Two-column layout for form */
+.form-columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Adjust gap between columns as needed */
+  margin-bottom: 1rem; /* Space before next full-width section */
+}
+
+.form-column {
+  flex: 1 1 45%; /* Each column aims for 45% basis, allowing for gap */
+  min-width: 280px; /* Minimum width before stacking */
+}
+
+/* Responsive: Stack columns on smaller screens */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .form-column {
+    flex-basis: 100%; /* Columns take full width */
+  }
+}
+
 .submit-btn {
   width: 100%;
   padding: 0.75rem;

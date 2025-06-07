@@ -319,3 +319,17 @@ body.dark .btn, body.dark .fab { background: #bb86fc; }
   body { background: #fff; color: #000; }
   a { text-decoration: underline; }
 }
+
+/* Desktop Service Card Layout Adjustments */
+@media (min-width: 769px) {
+  .services .card {
+    flex-basis: 300px; /* Slightly increase basis from 280px */
+    /* This makes it a bit harder for 3 to fit comfortably on narrower desktop screens, promoting a 2x2 wrap.
+       (3 * 300px) + (2 * 16px) = 900 + 32 = 932px needed for 3 cards.
+       (4 * 300px) + (3 * 16px) = 1200 + 48 = 1248px needed for 4 cards.
+       The max-width: 360px still applies.
+       This should make a 2x2 grid more common on screens ~932px to ~1248px (considering container padding).
+       On screens wider than ~1250px, they might go 4-across if there's enough room for them to grow.
+    */
+  }
+}

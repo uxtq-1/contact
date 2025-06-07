@@ -1,0 +1,17 @@
+{
+  "name": "ops-online-support-website",
+  "version": "1.0.0",
+  "description": "Website for Ops Online Support",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "terser": "^5.20.0"
+  },
+  "author": "Ops Online Support",
+  "license": "UNLICENSED"
+}
