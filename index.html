@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer-policy" content="strict-origin-when-cross-origin">
   
   <!-- Primary Title & SEO Metas -->
   <title>Ops Online Support – Secure IT & Remote Services</title>
@@ -81,13 +84,13 @@
     <a class="logo" href="index.html" aria-label="Ops Online Support Home">OPS</a>
     <nav id="desktop-nav" aria-label="Main navigation">
       <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-      <a href="index.html"               data-en="Home"             data-es="Inicio">Home</a>
-      <a href="business-operations.html" data-en="Operations"       data-es="Gestión">Operations</a>
-      <a href="contact-center.html"      data-en="Contact Center"   data-es="Centro">Contact Center</a>
-      <a href="it-support.html"          data-en="IT Support"       data-es="Soporte IT">IT Support</a>
-      <a href="professionals.html"       data-en="Professionals"    data-es="Profesionales">Professionals</a>
-      <a href="contact.html"             data-en="Contact"          data-es="Enlázate">Contact</a>
-      <a href="join.html"                data-en="Join"             data-es="Únete">Join</a>
+      <a href="index.html"               data-translate-key="home_nav">Home</a>
+      <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
+      <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
+      <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
+      <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
+      <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
+      <a href="join.html"                data-translate-key="join_nav">Join</a>
     </nav>
     <div class="toggle-box">
       <button id="lang-toggle"  aria-label="Toggle language">ES</button>
@@ -100,22 +103,22 @@
   <nav id="mobile-drawer" class="drawer" aria-hidden="true" aria-label="Mobile navigation">
     <button id="drawer-close" aria-label="Close mobile menu">✕</button>
     <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-    <a href="index.html"               data-en="Home"           data-es="Inicio">Home</a>
-    <a href="business-operations.html" data-en="Operations"     data-es="Gestión">Operations</a>
-    <a href="contact-center.html"      data-en="Contact Center" data-es="Centro">Contact Center</a>
-    <a href="it-support.html"          data-en="IT Support"     data-es="Soporte IT">IT Support</a>
-    <a href="professionals.html"       data-en="Professionals"  data-es="Profesionales">Professionals</a>
-    <a href="contact.html"             data-en="Contact"        data-es="Enlázate">Contact</a>
-    <a href="join.html"                data-en="Join"           data-es="Únete">Join</a>
+    <a href="index.html"               data-translate-key="home_nav">Home</a>
+    <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
+    <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
+    <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
+    <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
+    <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
+    <a href="join.html"                data-translate-key="join_nav">Join</a>
   </nav>
 
   <!-- MAIN CONTENT -->
   <main id="main">
     <section class="hero">
-      <h1 data-en="Empowering Secure Remote Solutions" data-es="Potenciando Soluciones Remotas Seguras">
+      <h1 data-translate-key="hero_title">
         Empowering Secure Remote Solutions
       </h1>
-      <p data-en="Cutting-edge strategies for operations, IT, and CX." data-es="Estrategias de vanguardia para operaciones, IT y CX.">
+      <p data-translate-key="hero_subtitle">
         Cutting-edge strategies for operations, IT, and CX.
       </p>
       <!-- Lazy-load Hero Image with responsive srcset -->
@@ -128,41 +131,40 @@
     </section>
 
     <section class="services" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title" data-en="Our Services" data-es="Nuestros Servicios">Our Services</h2>
+      <h2 id="services-heading" class="section-title" data-translate-key="services_title">Our Services</h2>
       <article class="card">
-        <h3><a href="business-operations.html" class="card-link" data-en="Operations"  data-es="Gestión">Operations</a></h3>
-        <p data-en="Optimize workflows with data-driven dispatch." data-es="Optimiza flujos con despacho basado en datos.">
+        <h3><a href="business-operations.html" class="card-link" data-translate-key="operations_card_title">Operations</a></h3>
+        <p data-translate-key="operations_card_desc">
           Optimize workflows with data-driven dispatch.
         </p>
-        <a class="btn" href="business-operations.html" data-en="Learn More about Operations" data-es="Saber más sobre Gestión">Learn More</a>
+        <a class="btn" href="business-operations.html" data-translate-key="operations_card_learn_more">Learn More</a>
       </article>
       <article class="card">
-        <h3><a href="contact-center.html" class="card-link" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a></h3>
-        <p data-en="Elevate CX with multilingual, AI-assisted agents." data-es="Eleva CX con agentes IA multilingües.">
+        <h3><a href="contact-center.html" class="card-link" data-translate-key="contact_center_card_title">Contact Center</a></h3>
+        <p data-translate-key="contact_center_card_desc">
           Elevate CX with multilingual, AI-assisted agents.
         </p>
-        <a class="btn" href="contact-center.html" data-en="Learn More about Contact Center" data-es="Saber más sobre Centro de Contacto">Learn More</a>
+        <a class="btn" href="contact-center.html" data-translate-key="contact_center_card_learn_more">Learn More</a>
       </article>
       <article class="card">
-        <h3><a href="it-support.html" class="card-link" data-en="IT Support" data-es="Soporte IT">IT Support</a></h3>
-        <p data-en="Rugged, 24/7 secure IT for hybrid teams." data-es="IT seguro 24/7 para equipos híbridos.">
+        <h3><a href="it-support.html" class="card-link" data-translate-key="it_support_card_title">IT Support</a></h3>
+        <p data-translate-key="it_support_card_desc">
           Rugged, 24/7 secure IT for hybrid teams.
         </p>
-        <a class="btn" href="it-support.html" data-en="Learn More about IT Support" data-es="Saber más sobre Soporte IT">Learn More</a>
+        <a class="btn" href="it-support.html" data-translate-key="it_support_card_learn_more">Learn More</a>
       </article>
       <article class="card">
-        <h3><a href="professionals.html" class="card-link" data-en="Professionals" data-es="Profesionales">Professionals</a></h3>
-        <p data-en="Access top-tier professionals for your business needs." data-es="Accede a profesionales de primer nivel para tu negocio.">
+        <h3><a href="professionals.html" class="card-link" data-translate-key="professionals_card_title">Professionals</a></h3>
+        <p data-translate-key="professionals_card_desc">
           Access top-tier professionals for your business needs.
         </p>
-        <a class="btn" href="professionals.html" data-en="Learn More about Professionals" data-es="Saber más sobre Profesionales">Learn More</a>
+        <a class="btn" href="professionals.html" data-translate-key="professionals_card_learn_more">Learn More</a>
       </article>
     </section>
   </main>
 
   <!-- FLOATING ACTION BUTTONS -->
   <div class="fab-box" role="toolbar" aria-label="Quick actions">
-    <button id="chat-fab"   class="fab" aria-label="Open chatbot">💬</button>
     <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team">➕</a>
     <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us">✉</a>
   </div>
