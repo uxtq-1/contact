@@ -67,5 +67,18 @@
   "hobbies_placeholder": "ej., Lectura, Senderismo",
   "resume_upload_label": "Subir CV (PDF, DOCX)",
   "submit_application_button": "Enviar",
-  "thank_you_message": "Gracias por confiar en nosotros. Nos pondremos en contacto lo antes posible. Tus datos están en tránsito y se están encriptando …"
+  "thank_you_message": "Gracias por confiar en nosotros. Nos pondremos en contacto lo antes posible. Tus datos están en tránsito y se están encriptando …",
+  "join_form_firstname_placeholder": "ej., Juan",
+  "join_form_lastname_placeholder": "ej., Pérez",
+  "join_form_email_placeholder": "ej., juan.perez@example.com",
+  "join_form_experience_placeholder": "Describe brevemente tu experiencia relevante.",
+  "join_form_jobtitles_placeholder": "ej., Desarrollador Senior",
+  "join_form_yearsexp_placeholder": "ej., 5",
+  "join_form_phone_placeholder": "ej., +1-555-123-4567",
+  "join_form_skills_placeholder": "ej., JavaScript, Python, Gestión de Proyectos",
+  "join_form_certdesc_placeholder": "ej., AWS Certified Solutions Architect",
+  "join_form_profsummary_placeholder": "Un breve resumen de tu trayectoria profesional.",
+  "join_form_edudesc_placeholder": "ej., Lic. en Informática, Nombre de Universidad",
+  "join_form_projects_placeholder": "ej., Desarrollé plataforma e-commerce",
+  "join_form_hobbies_placeholder": "ej., Lectura, Senderismo, Programación"
 }
