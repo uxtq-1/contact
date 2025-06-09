@@ -67,5 +67,18 @@
   "hobbies_placeholder": "e.g., Reading, Hiking",
   "resume_upload_label": "Upload Resume (PDF, DOCX)",
   "submit_application_button": "Submit",
-  "thank_you_message": "Thank you for your confidence in us. We will contact you as soon as we can. Your data is in transit and it is encrypting …"
+  "thank_you_message": "Thank you for your confidence in us. We will contact you as soon as we can. Your data is in transit and it is encrypting …",
+  "join_form_firstname_placeholder": "e.g., John",
+  "join_form_lastname_placeholder": "e.g., Doe",
+  "join_form_email_placeholder": "e.g., john.doe@example.com",
+  "join_form_experience_placeholder": "Briefly describe your relevant experience.",
+  "join_form_jobtitles_placeholder": "e.g., Senior Developer",
+  "join_form_yearsexp_placeholder": "e.g., 5",
+  "join_form_phone_placeholder": "e.g., +1-555-123-4567",
+  "join_form_skills_placeholder": "e.g., JavaScript, Python, Project Management",
+  "join_form_certdesc_placeholder": "e.g., AWS Certified Solutions Architect",
+  "join_form_profsummary_placeholder": "A brief summary of your professional background.",
+  "join_form_edudesc_placeholder": "e.g., B.S. Computer Science, University Name",
+  "join_form_projects_placeholder": "e.g., Developed e-commerce platform",
+  "join_form_hobbies_placeholder": "e.g., Reading, Hiking, Coding"
 }

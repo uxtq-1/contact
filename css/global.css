@@ -184,8 +184,14 @@ header {
   border: none;
   background: var(--primary);
   color: #fff;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; /* Old icon size, new one is 1.25rem */
   cursor: pointer;
+  /* Added for icon centering and if FABs are <a> tags */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.25rem; /* Adjusted icon size for 56px FAB */
 }
 .fab:hover {
   background: var(--primary-dark);
@@ -344,6 +350,18 @@ body.dark .submit-btn:hover { background: #a06cd5; /* Adjusted hover for dark mo
   }
   .submit-btn { /* From join.css specific mobile override */
     font-size: 1rem;
+  }
+
+  /* FAB adjustments for smaller screens */
+  .fab-box {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    gap: 0.5rem; /* Adjusted gap for smaller buttons */
+  }
+  .fab {
+    width: 48px; /* Smaller FAB size */
+    height: 48px; /* Smaller FAB size */
+    font-size: 1.1rem; /* Adjusted icon size for smaller FAB */
   }
 }
 

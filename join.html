@@ -105,26 +105,26 @@
           <!-- First Name -->
           <div class="form-group">
             <label for="first-name" data-en="First Name" data-es="Nombre">First Name</label>
-            <input type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="" data-en="Enter your first name" data-es="Introduce tu nombre">
+            <input type="text" id="first-name" name="first_name" required autocomplete="given-name" placeholder="e.g., John" data-translate-key="join_form_firstname_placeholder">
           </div>
 
           <!-- Last Name -->
           <div class="form-group">
             <label for="last-name" data-en="Last Name" data-es="Apellido">Last Name</label>
-            <input type="text" id="last-name" name="last_name" required autocomplete="family-name" placeholder="" data-en="Enter your last name" data-es="Introduce tu apellido">
+            <input type="text" id="last-name" name="last_name" required autocomplete="family-name" placeholder="e.g., Doe" data-translate-key="join_form_lastname_placeholder">
           </div>
 
           <!-- Email -->
           <div class="form-group">
             <label for="email" data-en="Email" data-es="Correo Electrónico">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email" placeholder="" data-en="Enter your email" data-es="Introduce tu correo">
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="e.g., john.doe@example.com" data-translate-key="join_form_email_placeholder">
           </div>
 
           <!-- Experience (multi-field) -->
           <div class="form-group multi-field" data-field="experience">
             <label data-en="Experience" data-es="Experiencia">Experience</label>
             <div class="field-row">
-              <textarea name="experience[]" rows="3" required placeholder="" data-en="You can copy-paste your experience" data-es="Puedes copiar y pegar tu experiencia"></textarea>
+              <textarea name="experience[]" rows="3" required placeholder="Briefly describe your relevant experience." data-translate-key="join_form_experience_placeholder"></textarea>
               <button type="button" class="add-btn" data-field="experience" aria-label="Add experience item">＋</button>
               <button type="button" class="remove-btn" data-field="experience" aria-label="Remove experience item">−</button>
             </div>
@@ -134,7 +134,7 @@
           <div class="form-group multi-field" data-field="job_titles">
             <label data-en="Job Titles" data-es="Títulos del Puesto">Job Titles</label>
             <div class="field-row">
-              <input type="text" name="job_titles[]" required placeholder="" data-en="e.g., Senior Developer" data-es="ej., Desarrollador Senior">
+              <input type="text" name="job_titles[]" required placeholder="e.g., Senior Developer" data-translate-key="join_form_jobtitles_placeholder">
               <button type="button" class="add-btn" data-field="job_titles" aria-label="Add job title">＋</button>
               <button type="button" class="remove-btn" data-field="job_titles" aria-label="Remove job title">−</button>
             </div>
@@ -157,20 +157,20 @@
           <!-- Years of Working Experience -->
           <div class="form-group">
             <label for="years-exp" data-en="Years of Working Experience" data-es="Años de Experiencia Laboral">Years of Working Experience</label>
-            <input type="number" id="years-exp" name="years_experience" min="0" step="1" required placeholder="" data-en="e.g., 5" data-es="ej., 5">
+            <input type="number" id="years-exp" name="years_experience" min="0" step="1" required placeholder="e.g., 5" data-translate-key="join_form_yearsexp_placeholder">
           </div>
 
           <!-- Phone Number -->
           <div class="form-group">
             <label for="phone" data-en="Phone" data-es="Teléfono">Phone</label>
-            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="" data-en="Enter your phone number" data-es="Introduce tu número de teléfono">
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="e.g., +1-555-123-4567" data-translate-key="join_form_phone_placeholder">
           </div>
 
           <!-- Skills (multi-field) -->
           <div class="form-group multi-field" data-field="skills">
             <label data-en="Skills" data-es="Habilidades">Skills</label>
             <div class="field-row">
-              <input type="text" name="skills[]" required placeholder="" data-en="e.g., JavaScript, Python" data-es="ej., JavaScript, Python">
+              <input type="text" name="skills[]" required placeholder="e.g., JavaScript, Python, Project Management" data-translate-key="join_form_skills_placeholder">
               <button type="button" class="add-btn" data-field="skills" aria-label="Add skill">＋</button>
               <button type="button" class="remove-btn" data-field="skills" aria-label="Remove skill">−</button>
             </div>
@@ -181,7 +181,7 @@
             <label data-en="Certifications or Licenses" data-es="Certificaciones o Licencias">Certifications or Licenses</label>
             <div class="field-row">
               <input type="date" name="certifications_date[]" required aria-label="Certification date">
-              <input type="text" name="certifications_desc[]" required placeholder="" data-en="e.g., A+, Network+" data-es="ej., A+, Network+" aria-label="Certification description">
+              <input type="text" name="certifications_desc[]" required placeholder="e.g., AWS Certified Solutions Architect" data-translate-key="join_form_certdesc_placeholder" aria-label="Certification description">
               <button type="button" class="add-btn" data-field="certifications" aria-label="Add certification">＋</button>
               <button type="button" class="remove-btn" data-field="certifications" aria-label="Remove certification">−</button>
             </div>
@@ -193,7 +193,7 @@
       <div class="form-group multi-field" data-field="prof_summary">
         <label data-en="Professional Summary" data-es="Resumen Profesional">Professional Summary</label>
         <div class="field-row">
-          <textarea name="prof_summary[]" rows="3" required placeholder="" data-en="You can copy-paste your summary" data-es="Puedes copiar y pegar tu resumen"></textarea>
+          <textarea name="prof_summary[]" rows="3" required placeholder="A brief summary of your professional background." data-translate-key="join_form_profsummary_placeholder"></textarea>
           <button type="button" class="add-btn" data-field="prof_summary" aria-label="Add professional summary item">＋</button>
           <button type="button" class="remove-btn" data-field="prof_summary" aria-label="Remove professional summary item">−</button>
         </div>
@@ -204,7 +204,7 @@
         <label data-en="Education" data-es="Educación">Education</label>
         <div class="field-row">
           <input type="date" name="education_date[]" required aria-label="Education end date">
-          <input type="text" name="education_desc[]" required placeholder="" data-en="e.g., B.S. in Computer Science" data-es="ej., Licenciatura en Informática" aria-label="Education description">
+          <input type="text" name="education_desc[]" required placeholder="e.g., B.S. Computer Science, University Name" data-translate-key="join_form_edudesc_placeholder" aria-label="Education description">
           <button type="button" class="add-btn" data-field="education" aria-label="Add education item">＋</button>
           <button type="button" class="remove-btn" data-field="education" aria-label="Remove education item">−</button>
         </div>
@@ -214,7 +214,7 @@
       <div class="form-group multi-field" data-field="projects">
         <label data-en="Projects (External/Internal)" data-es="Proyectos (Externos/Internos)">Projects Ex/Internal</label>
         <div class="field-row">
-          <input type="text" name="projects[]" required placeholder="" data-en="Describe a project" data-es="Describe un proyecto">
+          <input type="text" name="projects[]" required placeholder="e.g., Developed e-commerce platform" data-translate-key="join_form_projects_placeholder">
           <button type="button" class="add-btn" data-field="projects" aria-label="Add project">＋</button>
           <button type="button" class="remove-btn" data-field="projects" aria-label="Remove project">−</button>
         </div>
@@ -224,19 +224,28 @@
       <div class="form-group multi-field" data-field="hobbies">
         <label data-en="Hobbies" data-es="Pasatiempos">Hobbies</label>
         <div class="field-row">
-          <input type="text" name="hobbies[]" required placeholder="" data-en="e.g., Reading, Hiking" data-es="ej., Lectura, Senderismo">
+          <input type="text" name="hobbies[]" required placeholder="e.g., Reading, Hiking, Coding" data-translate-key="join_form_hobbies_placeholder">
           <button type="button" class="add-btn" data-field="hobbies" aria-label="Add hobby">＋</button>
           <button type="button" class="remove-btn" data-field="hobbies" aria-label="Remove hobby">−</button>
         </div>
       </div>
-      
+
+      <!-- Resume Upload -->
+      <div class="form-group">
+        <label for="resume-file" data-en="Upload Resume (PDF, DOCX)" data-es="Subir CV (PDF, DOCX)">Upload Resume (PDF, DOCX)</label>
+        <input type="file" id="resume-file" name="resume_file" accept=".pdf,.doc,.docx">
+        <!-- Note: Actual file upload handling is done in JavaScript and requires server-side processing (e.g., pre-signed URLs) -->
+      </div>
+
+
       <!-- Submit Button -->
       <div class="form-group">
         <button type="submit" id="submit-btn" class="submit-btn" data-en="Submit" data-es="Enviar">Submit</button>
       </div>
-      
+
       <!-- Feedback Message Area -->
       <div id="join-feedback-msg" class="status"></div>
+
       <!-- Progress / Thank You Message (hidden initially) -->
       <div id="thank-you" class="thank-you" hidden data-en="Thank you for your confidence in us. We will contact you as soon as we can. Your data is in transit and it is encrypting …" data-es="Gracias por confiar en nosotros. Nos pondremos en contacto lo antes posible. Tus datos están en tránsito y se están encriptando …">
         <span id="thank-you-text">Thank you for your confidence in us. We will contact you as soon as we can. Your data is in transit and it is encrypting …</span>
