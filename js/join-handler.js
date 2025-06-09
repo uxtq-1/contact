@@ -124,8 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Example: const resumeFile = form.querySelector('#resume-file').files[0]; if (resumeFile) { /* ...upload logic... */ }
 
 
+    // IMPORTANT: Applicant data, especially sensitive information like resumes, should be handled securely by a backend server. This includes proper validation, sanitization, and encryption at rest. Client-side code cannot ensure the security of this data.
+    // TODO: Replace 'REAL_SERVICE_ID_HERE' with the actual service ID for the backend processing this form.
     try {
-      const res = await fetch("https://YOUR_SERVERLESS_FUNCTION_ENDPOINT/join", { // Placeholder URL
+      const res = await fetch("REAL_SERVICE_ID_HERE", { // Placeholder URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",

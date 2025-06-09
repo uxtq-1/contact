@@ -54,7 +54,7 @@
     };
 
     try {
-      const res = await fetch("https://YOUR_SERVERLESS_FUNCTION_ENDPOINT/contact", { // Placeholder URL
+      const res = await fetch("REAL_SERVICE_ID_HERE", { // Placeholder URL
         method: "POST",
         headers: {
           "Content-Type": "application/json",
