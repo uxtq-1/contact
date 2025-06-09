@@ -230,6 +230,14 @@
         </div>
       </div>
 
+      <!-- Resume Upload -->
+      <div class="form-group">
+        <label for="resume-file" data-en="Upload Resume (PDF, DOCX)" data-es="Subir CV (PDF, DOCX)">Upload Resume (PDF, DOCX)</label>
+        <input type="file" id="resume-file" name="resume_file" accept=".pdf,.doc,.docx">
+        <!-- Note: Actual file upload handling is done in JavaScript and requires server-side processing (e.g., pre-signed URLs) -->
+      </div>
+
+
       <!-- Submit Button -->
       <div class="form-group">
         <button type="submit" id="submit-btn" class="submit-btn" data-en="Submit" data-es="Enviar">Submit</button>
@@ -250,8 +258,8 @@
 
   <!-- FABs & Footer (same as index) -->
   <div class="fab-box" role="toolbar" aria-label="Quick actions">
-    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team">➕</a>
-    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us">✉</a>
+    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team"><i class="fas fa-user-plus"></i></a>
+    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us"><i class="fas fa-envelope-open-text"></i></a>
   </div>
 
   <footer>
