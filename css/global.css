@@ -206,18 +206,38 @@ form {
 .field textarea, .form-group textarea {
   resize: vertical;
 }
-.btn, .submit-btn {
+
+/* Generic Button Style (can be used for non-submit buttons if needed) */
+.btn {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* Default padding */
   border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1rem; /* Default font size */
+  text-align: center;
 }
-.btn:hover, .submit-btn:hover {
+.btn:hover {
   background: var(--primary-dark);
 }
+
+/* Submit Button Style (enhanced from join.css) */
+.submit-btn {
+  width: 100%; /* Takes full width of its container */
+  padding: 0.75rem; /* Specific padding from join.css */
+  background-color: #007bff; /* Original join.css color */
+  color: #fff;
+  border: none;
+  font-size: 1.1rem; /* Specific font size from join.css */
+  border-radius: 4px; /* Specific border-radius from join.css */
+  cursor: pointer;
+  /* Inherits text-align: center if .btn also has it, or add if needed */
+}
+.submit-btn:hover {
+  background-color: #0069d9; /* Original join.css hover color */
+}
+
 
 /* Status messages */
 .status {
@@ -292,12 +312,14 @@ body.dark {
 body.dark header { background: #1c1c1c; }
 body.dark #desktop-nav a { color: #e0e0e0; }
 body.dark .card { border-color: #bb86fc; }
-body.dark .btn, body.dark .fab { background: #bb86fc; }
+body.dark .btn, body.dark .fab, body.dark .submit-btn { background: #bb86fc; color: #000; /* Ensure text is readable on dark buttons */ }
+body.dark .submit-btn:hover { background: #a06cd5; /* Adjusted hover for dark mode button */ }
+
 
 /* MOBILE OVERRIDES (<=768px) */
 @media(max-width: 768px) {
   #desktop-nav { display: none; }
-  .hamburger { display: inline-block; }
+  .hamburger { display: inline-block; } /* This was missing, should be in global if menu depends on it */
   .hero h1 { font-size: 1.6rem; }
   .services { flex-direction: column; }
 }
@@ -309,8 +331,9 @@ body.dark .btn, body.dark .fab { background: #bb86fc; }
     height: 1.75rem;
     font-size: 1rem;
   }
-  /* Adjust .submit-btn if join.css is fully merged and this is needed globally */
-  /* .submit-btn { font-size: 1rem; } */
+  .submit-btn { /* From join.css specific mobile override */
+    font-size: 1rem;
+  }
 }
 
 /* PRINT-FRIENDLY */
@@ -333,3 +356,41 @@ body.dark .btn, body.dark .fab { background: #bb86fc; }
     */
   }
 }
+
+/* Styles originally from join.css */
+.container { /* Specific to join page, might need to be namespaced if used elsewhere or make more generic */
+  max-width: 600px; /* This was 600px in join.css, global form is 560px. Reconcile or namespace. */
+                     /* For now, assuming this is for the general page container of join.html, not just the form */
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.title { /* Specific to join page, might conflict if .title is used globally. Consider namespacing e.g. .join-title */
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Two-column layout for form (used on join page) */
+/* If this is only for join-form, consider prefixing with #join-form or a specific class for that form */
+.form-columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Adjust gap between columns as needed */
+  margin-bottom: 1rem; /* Space before next full-width section */
+}
+
+.form-column {
+  flex: 1 1 45%; /* Each column aims for 45% basis, allowing for gap */
+  min-width: 280px; /* Minimum width before stacking */
+}
+
+/* Responsive: Stack columns on smaller screens */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .form-column {
+    flex-basis: 100%; /* Columns take full width */
+  }
+  /* .container might need full width on mobile if it's too constrained by 600px max-width */
+  /* .title might need font size adjustment on mobile */
+}
+/* End of styles originally from join.css */
