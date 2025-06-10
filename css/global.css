@@ -199,9 +199,10 @@ header {
 
 /* Explicit styling for Font Awesome solid icons within FABs */
 .fab i.fas {
-  font-family: "Font Awesome 6 Free", "FontAwesome", sans-serif;
-  font-weight: 900; /* FAS (Solid) icons need font-weight 900 */
-  font-style: normal; /* Reset any inherited italicization */
+  font-family: "Font Awesome 6 Free", "FontAwesome", sans-serif !important;
+  font-weight: 900 !important; /* FAS (Solid) icons need font-weight 900 */
+  font-style: normal !important; /* Reset any inherited italicization */
+  color: inherit; /* Ensure it inherits the .fab color */
   /* display: inline-block; /* Usually handled by FA's CSS but can be explicit */
   /* text-rendering: auto; /* Usually handled by FA's CSS */
   /* -webkit-font-smoothing: antialiased; /* Usually handled by FA's CSS */

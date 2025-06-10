@@ -9,7 +9,9 @@
 
   // Function to fetch and apply translations
   async function loadTranslations(lang) {
+    console.log("loadTranslations called with lang:", lang);
     try {
+      console.log("Fetching translations from:", `../i18n/${lang}.json`);
       const response = await fetch(`../i18n/${lang}.json`); // Path relative to HTML files
       if (!response.ok) {
         console.error(`Error loading translation file for ${lang}: ${response.statusText}`);
@@ -21,6 +23,7 @@
         return;
       }
       currentTranslations = await response.json();
+      console.log("Translations fetched successfully for:", lang, "Data:", currentTranslations);
 
       document.documentElement.lang = lang;
 
@@ -49,11 +52,13 @@
       });
 
       if (langBtn) {
+        console.log("Updating langBtn text. Current lang:", lang, "Button text to set:", (lang === "en" ? "ES" : "EN"));
         langBtn.textContent = lang === "en" ? "ES" : "EN";
       }
       localStorage.setItem("lang", lang);
 
     } catch (error) {
+      console.error("Error in loadTranslations:", error);
       console.error(`Failed to load or apply translations for ${lang}:`, error);
        // Fallback to English on any error, except if English itself fails
       if (lang !== 'en') {
@@ -66,12 +71,15 @@
   // Expose a version of setAppLang that calls loadTranslations
   // This is what other scripts like join-handler.js will call
   window.setAppLang = async (lang) => {
+    console.log("window.setAppLang called with lang:", lang);
     await loadTranslations(lang);
   };
 
   if (langBtn) {
     langBtn.addEventListener("click", async () => {
+      console.log("Language toggle button clicked.");
       const newLang = document.documentElement.lang === "en" ? "es" : "en";
+      console.log("Current page lang:", document.documentElement.lang, "Attempting to switch to:", newLang);
       await window.setAppLang(newLang);
     });
   }
