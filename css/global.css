@@ -197,6 +197,17 @@ header {
   background: var(--primary-dark);
 }
 
+/* Explicit styling for Font Awesome solid icons within FABs */
+.fab i.fas {
+  font-family: "Font Awesome 6 Free", "FontAwesome", sans-serif;
+  font-weight: 900; /* FAS (Solid) icons need font-weight 900 */
+  font-style: normal; /* Reset any inherited italicization */
+  /* display: inline-block; /* Usually handled by FA's CSS but can be explicit */
+  /* text-rendering: auto; /* Usually handled by FA's CSS */
+  /* -webkit-font-smoothing: antialiased; /* Usually handled by FA's CSS */
+  /* -moz-osx-font-smoothing: grayscale; /* Usually handled by FA's CSS */
+}
+
 /* FORM (shared by Contact & Join) */
 form {
   max-width: 560px;
