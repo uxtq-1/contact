@@ -71,6 +71,14 @@ header {
   font-size: 0.9rem;
 }
 
+/* Hamburger for mobile menu */
+.hamburger {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hamburger { display: inline-block; }
+}
+
 /* MOBILE DRAWER */
 .drawer {
   position: fixed;
@@ -119,9 +127,9 @@ header {
 /* SECTION TITLE (used for "Our Services", etc.) */
 .section-title {
   text-align: center;
-  font-size: 1.8rem; /* Example size */
-  color: var(--primary-dark); /* Example color */
-  margin-bottom: 1.5rem; /* Example spacing */
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
 }
 
 /* CARDS/SERVICES */
@@ -141,17 +149,14 @@ header {
   padding: 1rem;
   text-align: center;
 }
-
-/* New container for service cards to enable horizontal layout */
 .services-container {
   display: flex;
-  flex-direction: row; /* Explicitly set, though it's the default for flex */
-  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-  justify-content: space-around; /* Distribute space around cards */
-  gap: 20px; /* Add space between cards */
-  padding: 20px 0; /* Add some padding above/below the container */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 20px 0;
 }
-
 .card h2 {
   color: var(--primary-dark);
   margin-bottom: 0.5rem;
@@ -184,29 +189,45 @@ header {
   border: none;
   background: var(--primary);
   color: #fff;
-  /* font-size: 1.5rem; /* Old icon size, new one is 1.25rem */
   cursor: pointer;
-  /* Added for icon centering and if FABs are <a> tags */
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 1.25rem; /* Adjusted icon size for 56px FAB */
+  font-size: 1.25rem;
+  box-shadow: 0 2px 8px rgba(80, 80, 150, 0.15);
+  transition: box-shadow 0.2s, background 0.2s;
 }
-.fab:hover {
+.fab:hover,
+.fab:focus-visible {
   background: var(--primary-dark);
+  outline: none;
+  box-shadow: 0 4px 12px rgba(80, 80, 150, 0.22);
+}
+/* Accessibility: visible focus for keyboard users */
+.fab:focus {
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+}
+body.dark .fab:focus {
+  outline: 2px solid #fff;
+}
+.fab:active {
+  box-shadow: 0 1px 4px rgba(80, 80, 150, 0.22);
+}
+
+/* Icon-only: pointer events just on button, not icon */
+.fab i {
+  pointer-events: none;
 }
 
 /* Explicit styling for Font Awesome solid icons within FABs */
 .fab i.fas {
   font-family: "Font Awesome 6 Free", "FontAwesome", sans-serif !important;
-  font-weight: 900 !important; /* FAS (Solid) icons need font-weight 900 */
-  font-style: normal !important; /* Reset any inherited italicization */
-  color: inherit; /* Ensure it inherits the .fab color */
-  /* display: inline-block; /* Usually handled by FA's CSS but can be explicit */
-  /* text-rendering: auto; /* Usually handled by FA's CSS */
-  /* -webkit-font-smoothing: antialiased; /* Usually handled by FA's CSS */
-  /* -moz-osx-font-smoothing: grayscale; /* Usually handled by FA's CSS */
+  font-weight: 900 !important;
+  font-style: normal !important;
+  color: inherit;
+  vertical-align: middle;
 }
 
 /* FORM (shared by Contact & Join) */
@@ -236,37 +257,40 @@ form {
   resize: vertical;
 }
 
-/* Generic Button Style (can be used for non-submit buttons if needed) */
+/* Generic Button Style */
 .btn {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem; /* Default padding */
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 1rem; /* Default font size */
+  font-size: 1rem;
   text-align: center;
+  transition: background 0.2s;
 }
-.btn:hover {
+.btn:hover,
+.btn:focus-visible {
   background: var(--primary-dark);
+  outline: none;
 }
 
-/* Submit Button Style (enhanced from join.css) */
+/* Submit Button Style */
 .submit-btn {
-  width: 100%; /* Takes full width of its container */
-  padding: 0.75rem; /* Specific padding from join.css */
-  background-color: #007bff; /* Original join.css color */
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
   color: #fff;
   border: none;
-  font-size: 1.1rem; /* Specific font size from join.css */
-  border-radius: 4px; /* Specific border-radius from join.css */
+  font-size: 1.1rem;
+  border-radius: 4px;
   cursor: pointer;
-  /* Inherits text-align: center if .btn also has it, or add if needed */
 }
-.submit-btn:hover {
-  background-color: #0069d9; /* Original join.css hover color */
+.submit-btn:hover,
+.submit-btn:focus-visible {
+  background-color: #0069d9;
+  outline: none;
 }
-
 
 /* Status messages */
 .status {
@@ -288,8 +312,6 @@ form {
 .multi-field textarea {
   flex: 1;
 }
-
-/* + / − buttons for multi-field */
 .add-btn, .remove-btn {
   margin-left: 0.5rem;
   background-color: #28a745;
@@ -304,8 +326,10 @@ form {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.add-btn:hover, .remove-btn:hover {
+.add-btn:hover, .remove-btn:hover,
+.add-btn:focus-visible, .remove-btn:focus-visible {
   background-color: #218838;
+  outline: none;
 }
 
 /* Thank You block */
@@ -341,39 +365,36 @@ body.dark {
 body.dark header { background: #1c1c1c; }
 body.dark #desktop-nav a { color: #e0e0e0; }
 body.dark .card { border-color: #bb86fc; }
-body.dark .btn, body.dark .fab, body.dark .submit-btn { background: #bb86fc; color: #000; /* Ensure text is readable on dark buttons */ }
-body.dark .submit-btn:hover { background: #a06cd5; /* Adjusted hover for dark mode button */ }
-
+body.dark .btn, body.dark .fab, body.dark .submit-btn { background: #bb86fc; color: #000; }
+body.dark .btn:hover, body.dark .fab:hover, body.dark .submit-btn:hover,
+body.dark .btn:focus-visible, body.dark .fab:focus-visible, body.dark .submit-btn:focus-visible
+{ background: #a06cd5; }
+body.dark .submit-btn:hover, body.dark .submit-btn:focus-visible { background: #a06cd5; }
 
 /* MOBILE OVERRIDES (<=768px) */
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   #desktop-nav { display: none; }
-  .hamburger { display: inline-block; } /* This was missing, should be in global if menu depends on it */
   .hero h1 { font-size: 1.6rem; }
   .services { flex-direction: column; }
 }
 
-/* Specific overrides for smaller screens, can be merged or kept separate */
+/* Specific overrides for smaller screens */
 @media (max-width: 480px) {
-  .add-btn, .remove-btn { /* Applied to both for consistency */
+  .add-btn, .remove-btn {
     width: 1.75rem;
     height: 1.75rem;
     font-size: 1rem;
   }
-  .submit-btn { /* From join.css specific mobile override */
-    font-size: 1rem;
-  }
-
-  /* FAB adjustments for smaller screens */
+  .submit-btn { font-size: 1rem; }
   .fab-box {
     bottom: 0.75rem;
     right: 0.75rem;
-    gap: 0.5rem; /* Adjusted gap for smaller buttons */
+    gap: 0.5rem;
   }
   .fab {
-    width: 48px; /* Smaller FAB size */
-    height: 48px; /* Smaller FAB size */
-    font-size: 1.1rem; /* Adjusted icon size for smaller FAB */
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
   }
 }
 
@@ -387,51 +408,33 @@ body.dark .submit-btn:hover { background: #a06cd5; /* Adjusted hover for dark mo
 /* Desktop Service Card Layout Adjustments */
 @media (min-width: 769px) {
   .services .card {
-    flex-basis: 300px; /* Slightly increase basis from 280px */
-    /* This makes it a bit harder for 3 to fit comfortably on narrower desktop screens, promoting a 2x2 wrap.
-       (3 * 300px) + (2 * 16px) = 900 + 32 = 932px needed for 3 cards.
-       (4 * 300px) + (3 * 16px) = 1200 + 48 = 1248px needed for 4 cards.
-       The max-width: 360px still applies.
-       This should make a 2x2 grid more common on screens ~932px to ~1248px (considering container padding).
-       On screens wider than ~1250px, they might go 4-across if there's enough room for them to grow.
-    */
+    flex-basis: 300px;
   }
 }
 
 /* Styles originally from join.css */
-.container { /* Specific to join page, might need to be namespaced if used elsewhere or make more generic */
-  max-width: 600px; /* This was 600px in join.css, global form is 560px. Reconcile or namespace. */
-                     /* For now, assuming this is for the general page container of join.html, not just the form */
+.container {
+  max-width: 600px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
-.title { /* Specific to join page, might conflict if .title is used globally. Consider namespacing e.g. .join-title */
+.title {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
-/* Two-column layout for form (used on join page) */
-/* If this is only for join-form, consider prefixing with #join-form or a specific class for that form */
 .form-columns-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem; /* Adjust gap between columns as needed */
-  margin-bottom: 1rem; /* Space before next full-width section */
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
-
 .form-column {
-  flex: 1 1 45%; /* Each column aims for 45% basis, allowing for gap */
-  min-width: 280px; /* Minimum width before stacking */
+  flex: 1 1 45%;
+  min-width: 280px;
 }
-
-/* Responsive: Stack columns on smaller screens */
-@media (max-width: 768px) { /* Adjust breakpoint as needed */
+@media (max-width: 768px) {
   .form-column {
-    flex-basis: 100%; /* Columns take full width */
+    flex-basis: 100%;
   }
-  /* .container might need full width on mobile if it's too constrained by 600px max-width */
-  /* .title might need font size adjustment on mobile */
 }
-/* End of styles originally from join.css */
