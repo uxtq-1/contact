@@ -173,13 +173,30 @@
 
   <!-- FABs & Footer (same) -->
   <div class="fab-box" role="toolbar" aria-label="Quick actions">
-    <a      id="join-fab"   class="fab" href="join.html" aria-label="Join our team"><i class="fas fa-user-plus"></i></a>
-    <a      id="contact-fab"class="fab" href="contact.html" aria-label="Contact us"><i class="fas fa-envelope-open-text"></i></a>
+    <a      id="join-fab-action"   class="fab" href="#" aria-label="Join our team"><i class="fas fa-user-plus"></i></a>
+    <a      id="contact-fab-action"class="fab" href="#" aria-label="Contact us"><i class="fas fa-envelope-open-text"></i></a>
   </div>
 
   <footer>
     <p>&copy; 2025 Ops Online Support. All rights reserved.</p>
   </footer>
+
+  <!-- MODALS -->
+  <div id="join-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close join form">✕</button>
+      <button class="modal-back" aria-label="Go back">Back</button>
+      <iframe src="join.html" title="Join Us Form"></iframe>
+    </div>
+  </div>
+
+  <div id="contact-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close contact form">✕</button>
+      <button class="modal-back" aria-label="Go back">Back</button>
+      <iframe src="contact.html" title="Contact Us Form"></iframe>
+    </div>
+  </div>
 
   <!-- SHARED SCRIPTS -->
   <script src="js/main.js"            defer></script>
