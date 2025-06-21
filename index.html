@@ -1,199 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta name="referrer-policy" content="strict-origin-when-cross-origin">
-  
-  <!-- Primary Title & SEO Metas -->
-  <title>Ops Online Support – Secure IT & Remote Services</title>
-  <meta name="description" content="Ops Online Support delivers secure IT support, remote contact-center services, and professional outsourcing under a rigorous cybersecurity framework.">
-  <meta name="keywords" content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Cybersecurity, NIST, PCI DSS">
-  <meta name="robots" content="index,follow">
-  <!-- Google Site Verification (replace with your token) -->
-  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://YOUR_SERVERLESS_FUNCTION_ENDPOINT_DOMAIN_HERE https://script.google.com; form-action 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self';">
-  
-  <!-- Open Graph for Social Sharing -->
-  <meta property="og:title" content="Ops Online Support">
-  <meta property="og:description" content="Secure IT support & remote services governed by NIST/CISA/PCI DSS standards.">
-  <meta property="og:image" content="assets/images/hero.webp"> <!-- Assuming image path remains valid -->
-  <meta property="og:url" content="https://www.opsonlinesupport.com">
-  <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure AI Chatbot</title>
+    <link rel="stylesheet" href="style.css">
 
-  <!-- JSON-LD Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Ops Online Support",
-    "url":"https://www.opsonlinesupport.com",
-    "logo":"https://www.opsonlinesupport.com/assets/logo.png",
-    "contactPoint":[
-      {
-        "@type":"ContactPoint",
-        "telephone":"+1-201-350-7567",
-        "contactType":"customer service",
-        "areaServed":"US",
-        "availableLanguage":["English","Spanish"]
-      },
-      {
-        "@type":"ContactPoint",
-        "telephone":"+1-201-350-7567", // Assuming same number for tech support
-        "contactType":"technical support",
-        "areaServed":"US",
-        "availableLanguage":["English","Spanish"]
-      }
-    ]
-  }
-  </script>
-  <!-- JSON-LD WebSite Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Ops Online Support",
-    "url": "https://www.opsonlinesupport.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.opsonlinesupport.com/search?q={search_term_string}", // Replace with actual search URL if available
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+    <!--
+      SECURITY HEADERS: These meta tags instruct the browser on how to handle content and requests,
+      enhancing security against common web vulnerabilities.
+    -->
 
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <!-- Font Awesome (latest) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pY1H4i9kqJ3lyE6N8Tq3khI1+7DxyG7xgHLRWofvFhYBDF3pKPt+UJ3Fd8YhrZ1F2Cfxt9hWvqn6wuK1QvAzHg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-/>
+    <!-- CSP (Content Security Policy)
+         Defines approved sources for content, mitigating XSS and data injection attacks.
+         - default-src 'self': Allows content from the same origin by default.
+         - script-src: Specifies allowed sources for JavaScript. Includes 'self', Google for reCAPTCHA, and Cloudflare for Turnstile.
+         - style-src: Specifies allowed sources for CSS. 'unsafe-inline' is included for the anti-cloning/honeypot styles.
+                      For maximum security, move all styles to style.css and remove 'unsafe-inline'.
+         - img-src: Allows images from 'self' and data URIs.
+         - font-src: Allows fonts from 'self'.
+         - frame-src: Specifies allowed sources for iframes (used by reCAPTCHA/Turnstile).
+         - connect-src: Restricts URLs for XHR, WebSockets, Fetch API. Crucial for controlling where data can be sent.
+                        Update 'https://your-cloudflare-ai-endpoint.example.com' to your actual AI backend.
+         - object-src 'none': Disallows plugins like Flash, reducing attack surface.
+         - base-uri 'self': Restricts the URLs that can be used in a document's <base> element.
+    -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+                   script-src 'self' https://www.google.com https://www.gstatic.com https://challenges.cloudflare.com;
+                   style-src 'self' 'unsafe-inline';
+                   img-src 'self' data:;
+                   font-src 'self';
+                   frame-src https://www.google.com https://www.gstatic.com https://challenges.cloudflare.com;
+                   connect-src 'self' https://your-cloudflare-ai-endpoint.example.com;
+                   object-src 'none';
+                   base-uri 'self';">
+    <!-- Other Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!-- Prevents clickjacking -->
+    <meta name="referrer-policy" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet"> <!-- Discourage search engine indexing and caching -->
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()"> <!-- Feature policy to disable unnecessary browser features -->
+
+    <style>
+        /* Anti-cloning: Basic CSS to make it slightly harder to copy-paste all content directly */
+        body {
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+        /* Honeypot field styling - ensure it's truly invisible and not accessible by users or assistive tech.
+           CSS `display: none !important` can sometimes be ignored by sophisticated bots or screen readers if not careful.
+           Combining opacity, absolute positioning off-screen, zero size, and z-index is more robust.
+           `pointer-events: none` ensures it doesn't interfere with mouse interactions on elements below it.
+        */
+        .honeypot-field {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            z-index: -1; /* Send it behind other content */
+            pointer-events: none; /* Make sure it cannot be interacted with */
+        }
+    </style>
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header>
-    <a class="logo" href="index.html" aria-label="Ops Online Support Home">OPS</a>
-    <nav id="desktop-nav" aria-label="Main navigation">
-      <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-      <a href="index.html"               data-translate-key="home_nav">Home</a>
-      <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
-      <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
-      <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
-      <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
-      <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
-      <a href="join.html"                data-translate-key="join_nav">Join</a>
-    </nav>
-    <div class="toggle-box">
-      <button id="lang-toggle"  aria-label="Toggle language">ES</button>
-      <button id="theme-toggle" aria-label="Toggle theme">Light</button>
-      <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>AI Chatbot Interface</h1>
+        </header>
+        <div class="chat-messages" id="chatMessages" aria-live="polite" aria-atomic="false">
+            <!-- Messages will appear here -->
+            <div class="message ai-message">
+                <p>Welcome! Please complete the security check to begin chatting.</p>
+            </div>
+        </div>
+        <div class="security-check-container" id="securityCheckContainer">
+            <!-- reCAPTCHA v2 Checkbox or Cloudflare Turnstile will be integrated here -->
+            <p><em>Please verify you are human:</em></p>
+            <!-- Example for Google reCAPTCHA v2 -->
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_V2_SITE_KEY" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired"></div>
+
+            <!-- Example for Cloudflare Turnstile -->
+            <!-- <div class="cf-turnstile" data-sitekey="YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY" data-callback="onTurnstileSuccess"></div> -->
+        </div>
+        <footer class="chat-input-area">
+            <form id="chatForm" action="javascript:void(0);"> <!-- Prevent default form submission -->
+                <!-- Honeypot field for bot detection -->
+                <div class="honeypot-field" aria-hidden="true">
+                    <label for="contact_me_by_fax_only">Contact me by fax only</label>
+                    <input type="checkbox" name="contact_me_by_fax_only" id="contact_me_by_fax_only" value="1" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="text" id="userInput" placeholder="Type your message..." autocomplete="off" disabled aria-label="User message input">
+                <button type="submit" id="sendButton" disabled>Send</button>
+            </form>
+        </footer>
     </div>
-  </header>
 
-  <!-- MOBILE DRAWER -->
-  <nav id="mobile-drawer" class="drawer" aria-hidden="true" aria-label="Mobile navigation">
-    <button id="drawer-close" aria-label="Close mobile menu">✕</button>
-    <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-    <a href="index.html"               data-translate-key="home_nav">Home</a>
-    <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
-    <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
-    <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
-    <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
-    <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
-    <a href="join.html"                data-translate-key="join_nav">Join</a>
-  </nav>
+    <!-- Cloudflare Turnstile script (if using Turnstile) -->
+    <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 
-  <!-- MAIN CONTENT -->
-  <main id="main">
-    <section class="hero">
-      <h1 data-translate-key="hero_title">
-        Empowering Secure Remote Solutions
-      </h1>
-      <p data-translate-key="hero_subtitle">
-        Cutting-edge strategies for operations, IT, and CX.
-      </p>
-      <!-- Lazy-load Hero Image with responsive srcset -->
-      <img 
-        src="assets/images/hero-400.webp"
-        srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero-1200.webp 1200w"
-        sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
-        alt="Technicians collaborating remotely using laptops and headsets in a modern office environment."
-        loading="lazy">
-    </section>
+    <!-- Google reCAPTCHA script (if using reCAPTCHA) -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 
-    <section class="services" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title" data-translate-key="services_title">Our Services</h2>
-      <div class="services-container">
-        <article class="card">
-          <h3><a href="business-operations.html" class="card-link" data-translate-key="operations_card_title">Operations</a></h3>
-          <p data-translate-key="operations_card_desc">
-            Optimize workflows with data-driven dispatch.
-          </p>
-          <a class="btn" href="business-operations.html" data-translate-key="operations_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="contact-center.html" class="card-link" data-translate-key="contact_center_card_title">Contact Center</a></h3>
-          <p data-translate-key="contact_center_card_desc">
-            Elevate CX with multilingual, AI-assisted agents.
-          </p>
-          <a class="btn" href="contact-center.html" data-translate-key="contact_center_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="it-support.html" class="card-link" data-translate-key="it_support_card_title">IT Support</a></h3>
-          <p data-translate-key="it_support_card_desc">
-            Rugged, 24/7 secure IT for hybrid teams.
-          </p>
-          <a class="btn" href="it-support.html" data-translate-key="it_support_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="professionals.html" class="card-link" data-translate-key="professionals_card_title">Professionals</a></h3>
-          <p data-translate-key="professionals_card_desc">
-            Access top-tier professionals for your business needs.
-          </p>
-          <a class="btn" href="professionals.html" data-translate-key="professionals_card_learn_more">Learn More</a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- FLOATING ACTION BUTTONS -->
-  <div class="fab-box" role="toolbar" aria-label="Quick actions">
-    <a      id="join-fab-action"   class="fab" href="#" aria-label="Join our team"><i class="fas fa-user-plus"></i></a>
-    <a      id="contact-fab-action"class="fab" href="#" aria-label="Contact us"><i class="fas fa-envelope-open-text"></i></a>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Ops Online Support. All rights reserved.</p>
-  </footer>
-
-  <!-- MODALS -->
-  <div id="join-modal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Close join form">✕</button>
-      <button class="modal-back" aria-label="Go back">Back</button>
-      <iframe src="join.html" title="Join Us Form"></iframe>
-    </div>
-  </div>
-
-  <div id="contact-modal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <button class="modal-close" aria-label="Close contact form">✕</button>
-      <button class="modal-back" aria-label="Go back">Back</button>
-      <iframe src="contact.html" title="Contact Us Form"></iframe>
-    </div>
-  </div>
-
-  <!-- SHARED SCRIPTS -->
-  <script src="js/main.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
