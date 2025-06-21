@@ -1,0 +1,43 @@
+<!-- Chat Panel Container - This is the main element to inject into your page -->
+<div id="aiChatPanel" class="ai-chat-panel" role="complementary" aria-labelledby="aiChatPanelHeaderTitle" style="display: none;">
+    <!-- Chat Header -->
+    <div class="ai-chat-panel-header">
+        <h2 id="aiChatPanelHeaderTitle" class="ai-chat-panel-title">AI Assistant</h2>
+        <button id="aiChatPanelCloseButton" class="ai-chat-panel-close-button" aria-label="Close chat panel">&times;</button>
+    </div>
+
+    <!-- Chat Messages Area -->
+    <div id="aiChatPanelMessages" class="ai-chat-panel-messages" aria-live="polite" aria-atomic="false">
+        <!-- Initial message or messages will appear here -->
+        <div class="message ai-message">
+            <p>Hello! Please complete the security check to start chatting.</p>
+        </div>
+    </div>
+
+    <!-- Security Check (reCAPTCHA/Turnstile) Container -->
+    <div id="aiChatPanelSecurityCheck" class="ai-chat-panel-security-check">
+        <p><em>Please verify you are human:</em></p>
+        <!-- Example for Google reCAPTCHA v2 -->
+        <!-- IMPORTANT: Replace YOUR_RECAPTCHA_V2_SITE_KEY_PANEL with your actual site key -->
+        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_V2_SITE_KEY_PANEL" data-callback="onPanelRecaptchaSuccess" data-expired-callback="onPanelRecaptchaExpired"></div>
+
+        <!-- Example for Cloudflare Turnstile -->
+        <!-- IMPORTANT: Replace YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL with your actual site key -->
+        <!-- <div class="cf-turnstile" data-sitekey="YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL" data-callback="onPanelTurnstileSuccess"></div> -->
+    </div>
+
+    <!-- Chat Input Area -->
+    <div id="aiChatPanelInputArea" class="ai-chat-panel-input-area">
+        <form id="aiChatPanelForm" action="javascript:void(0);">
+            <!-- Honeypot field for bot detection -->
+            <div class="ai-chat-panel-honeypot-field" aria-hidden="true">
+                <label for="panel_contact_me_by_fax_only">Contact me by fax only (bots)</label>
+                <input type="checkbox" name="panel_contact_me_by_fax_only" id="panel_contact_me_by_fax_only" value="1" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input type="text" id="aiChatPanelUserInput" class="ai-chat-panel-user-input" placeholder="Type your message..." autocomplete="off" disabled aria-label="User message input">
+            <button type="submit" id="aiChatPanelSendButton" class="ai-chat-panel-send-button" disabled>Send</button>
+        </form>
+    </div>
+    <!-- Note: Scripts for reCAPTCHA/Turnstile (api.js) should be loaded by the main page -->
+</div>
