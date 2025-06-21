@@ -118,4 +118,62 @@
   //     alert(currentTranslations["chatbot_coming_soon"] || "Chatbot coming soon…");
   //   });
   // }
+
+  /* MODAL DIALOGS */
+  const joinModal = $("#join-modal");
+  const contactModal = $("#contact-modal");
+  const joinFabAction = $("#join-fab-action");
+  const contactFabAction = $("#contact-fab-action");
+
+  function openModal(modal) {
+    if (modal) {
+      modal.style.display = "flex";
+    }
+  }
+
+  function closeModal(modal) {
+    if (modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  if (joinFabAction) {
+    joinFabAction.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default anchor behavior
+      openModal(joinModal);
+    });
+  }
+
+  if (contactFabAction) {
+    contactFabAction.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default anchor behavior
+      openModal(contactModal);
+    });
+  }
+
+  // Event listeners for close buttons and back buttons within modals
+  $$(".modal-close").forEach(button => {
+    button.addEventListener("click", () => {
+      const modal = button.closest(".modal");
+      closeModal(modal);
+    });
+  });
+
+  $$(".modal-back").forEach(button => {
+    button.addEventListener("click", () => {
+      history.back();
+    });
+  });
+
+  // Event listener for Escape key to close modals
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      if (joinModal && joinModal.style.display === "flex") {
+        closeModal(joinModal);
+      }
+      if (contactModal && contactModal.style.display === "flex") {
+        closeModal(contactModal);
+      }
+    }
+  });
 })();
