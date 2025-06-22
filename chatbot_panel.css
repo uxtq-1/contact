@@ -1,0 +1,246 @@
+/* chatbot_panel.css - Styles for the AI Chat Side Panel */
+
+/* Main Panel Container */
+.ai-chat-panel {
+    position: fixed;
+    top: 0;
+    right: 0; /* Anchored to the right. Change to 'left: 0;' for left side. */
+    width: 360px; /* Width of the chat panel. Adjust as needed. */
+    height: 100vh; /* Full viewport height. */
+    background-color: #ffffff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15); /* Shadow on the left side */
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; /* Ensure it's above most other content. Adjust if necessary. */
+
+    /* Initial hidden state (off-screen to the right) */
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth slide animation */
+    /* For display: none/flex toggling, remove transform and transition, handle in JS.
+       Using transform allows for smoother animations. */
+}
+
+.ai-chat-panel.open {
+    transform: translateX(0%); /* Slide in from the right */
+}
+
+/* Chat Panel Header */
+.ai-chat-panel-header {
+    background-color: #6a0dad; /* Main Purple Shade */
+    color: #ffffff;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #5e0ca5; /* Slightly darker purple */
+}
+
+.ai-chat-panel-title {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.ai-chat-panel-close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.ai-chat-panel-close-button:hover {
+    opacity: 0.8;
+}
+
+/* Chat Messages Area */
+.ai-chat-panel-messages {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f7f2ff; /* Very light purple tint */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Shared message styling (from previous full-page chat) */
+.ai-chat-panel-messages .message {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    max-width: 90%; /* Slightly more width available in a narrower panel */
+}
+
+.ai-chat-panel-messages .message p {
+    padding: 8px 12px;
+    border-radius: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    font-size: 0.95em;
+}
+
+/* AI Messages */
+.ai-chat-panel-messages .ai-message {
+    align-items: flex-start;
+}
+
+.ai-chat-panel-messages .ai-message p {
+    background-color: #8a2be2; /* Medium Purple */
+    color: #ffffff;
+    border-top-left-radius: 0;
+}
+
+/* User Messages */
+.ai-chat-panel-messages .user-message {
+    align-items: flex-end;
+    margin-left: auto; /* Push to the right */
+}
+
+.ai-chat-panel-messages .user-message p {
+    background-color: #e0e0e0; /* Light grey */
+    color: #333333;
+    border-top-right-radius: 0;
+}
+
+/* Security Check Container (reCAPTCHA/Turnstile) */
+.ai-chat-panel-security-check {
+    padding: 15px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.ai-chat-panel-security-check p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Center reCAPTCHA/Turnstile widget */
+.ai-chat-panel-security-check .g-recaptcha,
+.ai-chat-panel-security-check .cf-turnstile {
+    display: inline-block;
+    /* May need transform: scale(0.X) and transform-origin: center if widget is too wide,
+       but this can affect usability. Best if panel is wide enough. */
+}
+
+/* Chat Input Area */
+.ai-chat-panel-input-area {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.ai-chat-panel-input-area form {
+    display: flex;
+    width: 100%;
+}
+
+.ai-chat-panel-user-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    margin-right: 8px;
+    font-size: 0.95em;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.ai-chat-panel-user-input:focus {
+    border-color: #6a0dad; /* Purple focus highlight */
+}
+
+.ai-chat-panel-user-input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+.ai-chat-panel-send-button {
+    padding: 8px 15px;
+    background-color: #6a0dad; /* Main Purple Shade */
+    color: white;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+}
+
+.ai-chat-panel-send-button:hover {
+    background-color: #5e0ca5; /* Darker Purple on hover */
+}
+
+.ai-chat-panel-send-button:disabled {
+    background-color: #bca0dc; /* Lighter, desaturated purple */
+    cursor: not-allowed;
+}
+
+/* Honeypot field styling - ensure it's truly invisible */
+.ai-chat-panel-honeypot-field {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Scrollbar styling (Optional, for Webkit-based browsers) */
+.ai-chat-panel-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-chat-panel-messages::-webkit-scrollbar-track {
+    background: #f7f2ff;
+}
+
+.ai-chat-panel-messages::-webkit-scrollbar-thumb {
+    background-color: #c9a0eb; /* Lighter purple for scrollbar */
+    border-radius: 8px;
+    border: 1px solid #f7f2ff;
+}
+
+.ai-chat-panel-messages::-webkit-scrollbar-thumb:hover {
+    background-color: #b389d9;
+}
+
+/* Accessibility: Focus visible for keyboard navigation */
+.ai-chat-panel-close-button:focus-visible,
+.ai-chat-panel-user-input:focus-visible,
+.ai-chat-panel-send-button:focus-visible {
+    outline: 2px solid #8a2be2;
+    outline-offset: 2px;
+}
+/* If using display: none/flex for toggling, you might need to adjust focus management in JS */
+
+/* If the panel needs to adapt to smaller screen heights or very narrow views */
+@media (max-height: 400px) {
+    .ai-chat-panel-messages .message p {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+    .ai-chat-panel-user-input, .ai-chat-panel-send-button {
+        padding: 6px 10px;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 360px) { /* If panel itself is on a very narrow screen or its width is reduced */
+    /* Styles to make the panel content more compact if its own width becomes very small */
+}
+
+/* Example: If panel is on the left */
+/*
+.ai-chat-panel.left-aligned {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
+}
+.ai-chat-panel.left-aligned.open {
+    transform: translateX(0%);
+}
+*/
