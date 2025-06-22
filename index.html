@@ -1,199 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ==================================================================
+       Document Metadata & External Resources
+       ================================================================== -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="X-Frame-Options" content="DENY">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta name="referrer-policy" content="strict-origin-when-cross-origin">
-  
-  <!-- Primary Title & SEO Metas -->
-  <title>Ops Online Support – Secure IT & Remote Services</title>
-  <meta name="description" content="Ops Online Support delivers secure IT support, remote contact-center services, and professional outsourcing under a rigorous cybersecurity framework.">
-  <meta name="keywords" content="Secure IT, Remote Solutions, Contact Center, Outsourcing, Cybersecurity, NIST, PCI DSS">
-  <meta name="robots" content="index,follow">
-  <!-- Google Site Verification (replace with your token) -->
-  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://YOUR_SERVERLESS_FUNCTION_ENDPOINT_DOMAIN_HERE https://script.google.com; form-action 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self';">
-  
-  <!-- Open Graph for Social Sharing -->
-  <meta property="og:title" content="Ops Online Support">
-  <meta property="og:description" content="Secure IT support & remote services governed by NIST/CISA/PCI DSS standards.">
-  <meta property="og:image" content="assets/images/hero.webp"> <!-- Assuming image path remains valid -->
-  <meta property="og:url" content="https://www.opsonlinesupport.com">
-  <meta property="og:type" content="website">
-
-  <!-- JSON-LD Organization Schema -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Ops Online Support",
-    "url":"https://www.opsonlinesupport.com",
-    "logo":"https://www.opsonlinesupport.com/assets/logo.png",
-    "contactPoint":[
-      {
-        "@type":"ContactPoint",
-        "telephone":"+1-201-350-7567",
-        "contactType":"customer service",
-        "areaServed":"US",
-        "availableLanguage":["English","Spanish"]
-      },
-      {
-        "@type":"ContactPoint",
-        "telephone":"+1-201-350-7567", // Assuming same number for tech support
-        "contactType":"technical support",
-        "areaServed":"US",
-        "availableLanguage":["English","Spanish"]
-      }
-    ]
-  }
-  </script>
-  <!-- JSON-LD WebSite Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Ops Online Support",
-    "url": "https://www.opsonlinesupport.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.opsonlinesupport.com/search?q={search_term_string}", // Replace with actual search URL if available
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <!-- Global CSS -->
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <!-- Font Awesome (latest) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pY1H4i9kqJ3lyE6N8Tq3khI1+7DxyG7xgHLRWofvFhYBDF3pKPt+UJ3Fd8YhrZ1F2Cfxt9hWvqn6wuK1QvAzHg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPS Solutions Services</title>
+  <!-- Global CSS (Desktop-First) -->
+  <link rel="stylesheet" href="assets/css/global.css">
+  <!-- Additional overrides for small screens -->
+  <link rel="stylesheet" media="(max-width: 768px)" href="assets/css/small-screens.css"> <!-- Path updated, file not found during 'ls' -->
+  <!-- Font Awesome Stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+   <link rel="manifest" href="manifest.json"> <!-- Path is correct if manifest.json is at root, file not found during 'ls' -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="chatbot_files/css/chatbot_panel.css"> <!-- Added CSS for Chat Panel -->
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- ==================================================================
+       Header Section: Navigation & Toggle Buttons (Desktop Only)
+       ================================================================== -->
   <header>
-    <a class="logo" href="index.html" aria-label="Ops Online Support Home">OPS</a>
-    <nav id="desktop-nav" aria-label="Main navigation">
-      <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-      <a href="index.html"               data-translate-key="home_nav">Home</a>
-      <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
-      <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
-      <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
-      <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
-      <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
-      <a href="join.html"                data-translate-key="join_nav">Join</a>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+        <li><a href="business-operations.html" data-en="Business Operations" data-es="Operaciones Empresariales">Business Operations</a></li>
+        <li><a href="contact-center.html" data-en="Contact Center" data-es="Centro de Contacto">Contact Center</a></li>
+        <li><a href="it-support.html" data-en="IT Support" data-es="Soporte IT">IT Support</a></li>
+        <li><a href="professionals.html" data-en="Professionals" data-es="Profesionales">Professionals</a></li>
+      </ul>
     </nav>
-    <div class="toggle-box">
-      <button id="lang-toggle"  aria-label="Toggle language">ES</button>
-      <button id="theme-toggle" aria-label="Toggle theme">Light</button>
-      <button id="menu-toggle"  aria-label="Open mobile menu" class="hamburger">☰</button>
+
+    <!-- Theme and Language Toggle for Desktop -->
+    <div class="toggle-container">
+      <button id="theme-toggle-desktop">Light</button>
+      <button id="language-toggle-desktop">EN</button>
     </div>
   </header>
 
-  <!-- MOBILE DRAWER -->
-  <nav id="mobile-drawer" class="drawer" aria-hidden="true" aria-label="Mobile navigation">
-    <button id="drawer-close" aria-label="Close mobile menu">✕</button>
-    <!-- TODO: Implement JavaScript to set aria-current="page" on the active link -->
-    <a href="index.html"               data-translate-key="home_nav">Home</a>
-    <a href="business-operations.html" data-translate-key="operations_nav">Operations</a>
-    <a href="contact-center.html"      data-translate-key="contact_center_nav">Contact Center</a>
-    <a href="it-support.html"          data-translate-key="it_support_nav">IT Support</a>
-    <a href="professionals.html"       data-translate-key="professionals_nav">Professionals</a>
-    <a href="contact.html"             data-translate-key="contact_nav">Contact</a>
-    <a href="join.html"                data-translate-key="join_nav">Join</a>
-  </nav>
+  <!-- ==================================================================
+       Hero Section
+       ================================================================== -->
+  <section class="hero">
+    <h2 data-en="Welcome to Ops Solutions Services" data-es="Bienvenido a OPS Solutions Services">
+      Welcome to Ops Solutions Services
+    </h2>
+    <p data-en="Empowering remote solutions with cutting-edge strategies." data-es="Impulsando soluciones remotas con estrategias innovadoras.">
+      Empowering remote solutions with cutting-edge strategies.
+    </p>
+    <img src="assets/images/hero-image.jpg" alt="Hero Image" class="hero-image">
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <main id="main">
-    <section class="hero">
-      <h1 data-translate-key="hero_title">
-        Empowering Secure Remote Solutions
-      </h1>
-      <p data-translate-key="hero_subtitle">
-        Cutting-edge strategies for operations, IT, and CX.
+  <!-- ==================================================================
+       Services Preview Section
+       ================================================================== -->
+  <section id="services-preview" class="services">
+    <div class="service-item">
+      <h3 data-en="Business Operations" data-es="Operaciones Empresariales">Business Operations</h3>
+      <p data-en="Discover how we optimize your business processes." data-es="Descubre cómo optimizamos tus procesos empresariales.">
+        Discover how we optimize your business processes.
       </p>
-      <!-- Lazy-load Hero Image with responsive srcset -->
-      <img 
-        src="assets/images/hero-400.webp"
-        srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero-1200.webp 1200w"
-        sizes="(max-width:600px) 400px, (max-width:1200px) 800px, 1200px"
-        alt="Technicians collaborating remotely using laptops and headsets in a modern office environment."
-        loading="lazy">
-    </section>
+      <a href="business-operations.html" class="btn" data-en="Learn More" data-es="Saber Más">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3 data-en="Contact Center" data-es="Centro de Contacto">Contact Center</h3>
+      <p data-en="Enhance customer interactions with our contact solutions." data-es="Mejora la interacción con tus clientes con nuestras soluciones de contacto.">
+        Enhance customer interactions with our contact solutions.
+      </p>
+      <a href="contact-center.html" class="btn" data-en="Learn More" data-es="Saber Más">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3 data-en="IT Support" data-es="Soporte IT">IT Support</h3>
+      <p data-en="Ensure seamless IT operations with our expert support." data-es="Garantiza operaciones de IT sin problemas con nuestro soporte experto.">
+        Ensure seamless IT operations with our expert support.
+      </p>
+      <a href="it-support.html" class="btn" data-en="Learn More" data-es="Saber Más">Learn More</a>
+    </div>
+    <div class="service-item">
+      <h3 data-en="Professionals" data-es="Profesionales">Professionals</h3>
+      <p data-en="Access top-tier professionals for your business needs." data-es="Accede a profesionales de primer nivel para las necesidades de tu negocio.">
+        Access top-tier professionals for your business needs.
+      </p>
+      <a href="professionals.html" class="btn" data-en="Learn More" data-es="Saber Más">Learn More</a>
+    </div>
+  </section>
 
-    <section class="services" aria-labelledby="services-heading">
-      <h2 id="services-heading" class="section-title" data-translate-key="services_title">Our Services</h2>
-      <div class="services-container">
-        <article class="card">
-          <h3><a href="business-operations.html" class="card-link" data-translate-key="operations_card_title">Operations</a></h3>
-          <p data-translate-key="operations_card_desc">
-            Optimize workflows with data-driven dispatch.
-          </p>
-          <a class="btn" href="business-operations.html" data-translate-key="operations_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="contact-center.html" class="card-link" data-translate-key="contact_center_card_title">Contact Center</a></h3>
-          <p data-translate-key="contact_center_card_desc">
-            Elevate CX with multilingual, AI-assisted agents.
-          </p>
-          <a class="btn" href="contact-center.html" data-translate-key="contact_center_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="it-support.html" class="card-link" data-translate-key="it_support_card_title">IT Support</a></h3>
-          <p data-translate-key="it_support_card_desc">
-            Rugged, 24/7 secure IT for hybrid teams.
-          </p>
-          <a class="btn" href="it-support.html" data-translate-key="it_support_card_learn_more">Learn More</a>
-        </article>
-        <article class="card">
-          <h3><a href="professionals.html" class="card-link" data-translate-key="professionals_card_title">Professionals</a></h3>
-          <p data-translate-key="professionals_card_desc">
-            Access top-tier professionals for your business needs.
-          </p>
-          <a class="btn" href="professionals.html" data-translate-key="professionals_card_learn_more">Learn More</a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- FLOATING ACTION BUTTONS -->
-  <div class="fab-box" role="toolbar" aria-label="Quick actions">
-    <a      id="join-fab-action"   class="fab" href="#" aria-label="Join our team"><i class="fas fa-user-plus"></i></a>
-    <a      id="contact-fab-action"class="fab" href="#" aria-label="Contact us"><i class="fas fa-envelope-open-text"></i></a>
-  </div>
-
-  <!-- FOOTER -->
+  <!-- ==================================================================
+       Footer Section
+       ================================================================== -->
   <footer>
-    <p>&copy; 2025 Ops Online Support. All rights reserved.</p>
+    <p>&copy; 2025 OPS Solutions Services. All rights reserved.</p>
   </footer>
 
-  <!-- MODALS -->
-  <div id="join-modal" class="modal" style="display: none;">
+  <!-- ==================================================================
+       Floating Icons (Triggers for Modals)
+       ================================================================== -->
+  <div class="floating-icons">
+    <button class="floating-icon" data-modal="join-modal" aria-label="Join Us" tabindex="0">
+      <i class="fas fa-user-plus"></i>
+    </button>
+    <button class="floating-icon" data-modal="contact-modal" aria-label="Contact Us" tabindex="0">
+      <i class="fas fa-envelope-open-text"></i>
+    </button>
+  </div>
+
+  <!-- ==================================================================
+       Join Modal
+       ================================================================== -->
+  <div id="join-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="joinModalTitle">
     <div class="modal-content">
-      <button class="modal-close" aria-label="Close join form">✕</button>
-      <button class="modal-back" aria-label="Go back">Back</button>
-      <iframe src="join.html" title="Join Us Form"></iframe>
+      <!-- Modal Header: Title & Close Button -->
+      <div class="modal-header">
+        <h3 id="joinModalTitle" data-en="Join Us" data-es="Únete a Nosotros">Join Us</h3>
+        <button class="close-modal" data-close aria-label="Close">&times;</button>
+      </div>
+      <!-- Modal Body: Form with Grid (Table-like) Layout -->
+      <div class="modal-body">
+        <form id="join-form">
+          <!-- Row 1 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="join-name" data-en="Name" data-es="Nombre">Name</label>
+              <input
+                type="text"
+                id="join-name"
+                placeholder="Enter your name / Ingrese su Nombre"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="join-email" data-en="Email" data-es="Correo Electrónico">Email</label>
+              <input
+                type="email"
+                id="join-email"
+                placeholder="Enter your email / Ingrese su correo electrónico"
+                required
+              >
+            </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="join-contact" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
+              <input
+                type="tel"
+                id="join-contact"
+                placeholder="Enter your contact number / Ingrese su número"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="join-date" data-en="Date" data-es="Fecha">Date</label>
+              <input
+                type="date"
+                id="join-date"
+                required
+              >
+            </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="join-time" data-en="Time" data-es="Hora">Time</label>
+              <input
+                type="time"
+                id="join-time"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="join-resume" data-en="Upload Your Resume" data-es="Sube tu Currículum">Upload Your Resume</label>
+              <input
+                type="file"
+                id="join-resume"
+                accept=".pdf,.doc,.docx"
+                required
+              >
+            </div>
+          </div>
+          <!-- Row 4 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="join-cover" data-en="Upload Your Cover Letter" data-es="Sube tu Carta de Presentación">Upload Your Cover Letter</label>
+              <input
+                type="file"
+                id="join-cover"
+                accept=".pdf,.doc,.docx"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="join-comment" data-en="Comment" data-es="Comentario">Comment</label>
+              <textarea
+                id="join-comment"
+                rows="4"
+                placeholder="Tell us about yourself"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Modal Footer: Submit Button -->
+      <div class="modal-footer">
+        <button
+          type="submit"
+          form="join-form"
+          class="submit-button"
+          data-en="Submit"
+          data-es="Enviar"
+        >Submit</button>
+      </div>
     </div>
   </div>
 
-  <div id="contact-modal" class="modal" style="display: none;">
+  <!-- ==================================================================
+       Contact Modal
+       ================================================================== -->
+  <div id="contact-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="modal-content">
-      <button class="modal-close" aria-label="Close contact form">✕</button>
-      <button class="modal-back" aria-label="Go back">Back</button>
-      <iframe src="contact.html" title="Contact Us Form"></iframe>
+      <!-- Modal Header: Title & Close Button -->
+      <div class="modal-header">
+        <h3 id="contactModalTitle" data-en="Contact Us" data-es="Contáctenos">Contact Us</h3>
+        <button class="close-modal" data-close aria-label="Close">&times;</button>
+      </div>
+      <!-- Modal Body: Form with Grid (Table-like) Layout -->
+      <div class="modal-body">
+        <form id="contact-form">
+          <!-- Row 1 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="contact-name" data-en="Name" data-es="Nombre">Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                placeholder="Enter your name / Ingrese su Nombre"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="contact-email" data-en="Email" data-es="Correo Electrónico">Email</label>
+              <input
+                type="email"
+                id="contact-email"
+                placeholder="Enter your email / Ingrese su correo electrónico"
+                required
+              >
+            </div>
+          </div>
+          <!-- Row 2 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="contact-number" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
+              <input
+                type="tel"
+                id="contact-number"
+                placeholder="Enter your contact number / Ingrese su número"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="contact-date" data-en="Preferred Date" data-es="Fecha Preferida">Preferred Date</label>
+              <input
+                type="date"
+                id="contact-date"
+                required
+              >
+            </div>
+          </div>
+          <!-- Row 3 -->
+          <div class="form-row">
+            <div class="form-cell">
+              <label for="contact-time" data-en="Preferred Time" data-es="Hora Preferida">Preferred Time</label>
+              <input
+                type="time"
+                id="contact-time"
+                required
+              >
+            </div>
+            <div class="form-cell">
+              <label for="contact-comments" data-en="Comments" data-es="Comentarios">Comments</label>
+              <textarea
+                id="contact-comments"
+                rows="4"
+                placeholder="What service are you interested in? / En qué servicio está interesado?"
+                required
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Modal Footer: Submit Button -->
+      <div class="modal-footer">
+        <button
+          type="submit"
+          form="contact-form"
+          class="submit-button"
+          data-en="Send"
+          data-es="Enviar"
+        >Send</button>
+      </div>
     </div>
   </div>
 
-  <!-- SHARED SCRIPTS -->
-  <script src="js/main.js" defer></script>
+  <!-- ==================================================================
+       Mobile Bottom Navigation & Services Menu (Small Screens)
+       ================================================================== -->
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-nav">
+    <a href="index.html" class="mobile-nav-item">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+
+    <!-- Services Hamburger / Toggle -->
+    <button class="mobile-nav-item" id="mobile-services-toggle">
+      <i class="fas fa-bars"></i>
+      <span>Services</span>
+    </button>
+
+    <!-- Language Toggle (Mobile) -->
+    <button class="mobile-nav-item" id="mobile-language-toggle">EN</button>
+
+    <!-- Theme Toggle (Mobile) -->
+    <button class="mobile-nav-item" id="mobile-theme-toggle">Light</button>
+
+    <!-- Chat Link -->
+    <a href="#" class="mobile-nav-item">
+      <i class="fas fa-comment-alt"></i>
+      <span>Chat</span>
+    </a>
+  </nav>
+
+      <!-- Hidden Mobile Services Menu -->
+  <div class="mobile-services-menu" id="mobile-services-menu">
+    <ul>
+      <li><a href="business-operations.html">Business Operations</a></li>
+      <li><a href="contact-center.html">Contact Center</a></li>
+      <li><a href="it-support.html">IT Support</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+
+    <!-- Cloudflare Turnstile script (if using Turnstile) -->
+    <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    <!-- Google reCAPTCHA script (if using reCAPTCHA) -->
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+  <!-- ==================================================================
+       JavaScript: Main Functionality & Mobile Menu Toggle
+       ================================================================== -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/service-worker.js" defer></script>
+
+  <!-- Chat Panel HTML (Injected Here) -->
+  <!-- Chat Panel Container - This is the main element to inject into your page -->
+  <div id="aiChatPanel" class="ai-chat-panel" role="complementary" aria-labelledby="aiChatPanelHeaderTitle" style="display: none;">
+    <!-- Chat Header -->
+    <div class="ai-chat-panel-header">
+        <h2 id="aiChatPanelHeaderTitle" class="ai-chat-panel-title">AI Assistant</h2>
+        <button id="aiChatPanelCloseButton" class="ai-chat-panel-close-button" aria-label="Close chat panel">&times;</button>
+    </div>
+
+    <!-- Chat Messages Area -->
+    <div id="aiChatPanelMessages" class="ai-chat-panel-messages" aria-live="polite" aria-atomic="false">
+        <!-- Initial message or messages will appear here -->
+        <div class="message ai-message">
+            <p>Hello! Please complete the security check to start chatting.</p>
+        </div>
+    </div>
+
+    <!-- Security Check (reCAPTCHA/Turnstile) Container -->
+    <div id="aiChatPanelSecurityCheck" class="ai-chat-panel-security-check">
+        <p><em>Please verify you are human:</em></p>
+        <!-- Example for Google reCAPTCHA v2 -->
+        <!-- IMPORTANT: Replace YOUR_RECAPTCHA_V2_SITE_KEY_PANEL with your actual site key -->
+        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_V2_SITE_KEY_PANEL" data-callback="onPanelRecaptchaSuccess" data-expired-callback="onPanelRecaptchaExpired"></div>
+
+        <!-- Example for Cloudflare Turnstile -->
+        <!-- IMPORTANT: Replace YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL with your actual site key -->
+        <!-- <div class="cf-turnstile" data-sitekey="YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL" data-callback="onPanelTurnstileSuccess"></div> -->
+    </div>
+
+    <!-- Chat Input Area -->
+    <div id="aiChatPanelInputArea" class="ai-chat-panel-input-area">
+        <form id="aiChatPanelForm" action="javascript:void(0);">
+            <!-- Honeypot field for bot detection -->
+            <div class="ai-chat-panel-honeypot-field" aria-hidden="true">
+                <label for="panel_contact_me_by_fax_only">Contact me by fax only (bots)</label>
+                <input type="checkbox" name="panel_contact_me_by_fax_only" id="panel_contact_me_by_fax_only" value="1" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input type="text" id="aiChatPanelUserInput" class="ai-chat-panel-user-input" placeholder="Type your message..." autocomplete="off" disabled aria-label="User message input">
+            <button type="submit" id="aiChatPanelSendButton" class="ai-chat-panel-send-button" disabled>Send</button>
+        </form>
+    </div>
+    <!-- Note: Scripts for reCAPTCHA/Turnstile (api.js) should be loaded by the main page -->
+  </div>
+  <!-- End of Chat Panel HTML -->
+
+  <!-- Script for Chat Panel Logic -->
+  <script src="chatbot_files/js/chatbot_panel.js"></script>
+  <script>
+    // Initialize the chat panel once the DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AIChatPanelController) {
+        window.AIChatPanelController.init();
+      }
+
+      // Modify existing mobile chat link to toggle the panel
+      const mobileChatLink = document.querySelector('.mobile-nav a[href="#"] i.fa-comment-alt'); // More specific selector
+      if (mobileChatLink) {
+        const mobileChatButton = mobileChatLink.closest('a'); // Get the anchor tag
+        if (mobileChatButton) {
+            mobileChatButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                if (window.AIChatPanelController) {
+                    window.AIChatPanelController.toggle();
+                }
+            });
+        }
+      }
+      // TODO: Add a desktop floating icon trigger if needed and wire it up similarly.
+      // Example Desktop FAB (add this HTML where appropriate, e.g., before closing body):
+      // <button id="desktopChatFAB" style="position:fixed; bottom:20px; right:20px; z-index:1001; padding:15px; background-color:#6a0dad; color:white; border-radius:50%; border:none; cursor:pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);"><i class="fas fa-comment-alt"></i></button>
+      // const desktopChatFAB = document.getElementById('desktopChatFAB');
+      // if (desktopChatFAB && window.AIChatPanelController) {
+      //   desktopChatFAB.addEventListener('click', () => {
+      //     window.AIChatPanelController.toggle();
+      //   });
+      // }
+    });
+  </script>
+  <!-- Google reCAPTCHA API Script (Uncomment and use one of these if needed for the panel) -->
+  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+  <!-- Or Cloudflare Turnstile -->
+  <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 </body>
 </html>
