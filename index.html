@@ -8,13 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OPS Solutions Services</title>
   <!-- Global CSS (Desktop-First) -->
-  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="assets/css/global.css">
   <!-- Additional overrides for small screens -->
-  <link rel="stylesheet" media="(max-width: 768px)" href="css/small-screens.css">
+  <link rel="stylesheet" media="(max-width: 768px)" href="assets/css/small-screens.css"> <!-- Path updated, file not found during 'ls' -->
   <!-- Font Awesome Stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-   <link rel="manifest" href="manifest.json">
+   <link rel="manifest" href="manifest.json"> <!-- Path is correct if manifest.json is at root, file not found during 'ls' -->
   <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="chatbot_files/css/chatbot_panel.css"> <!-- Added CSS for Chat Panel -->
 </head>
 
 <body>
@@ -31,7 +32,6 @@
         <li><a href="professionals.html" data-en="Professionals" data-es="Profesionales">Professionals</a></li>
       </ul>
     </nav>
-  
     <!-- Theme and Language Toggle for Desktop -->
     <div class="toggle-container">
       <button id="theme-toggle-desktop">Light</button>
@@ -122,19 +122,19 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="join-name" data-en="Name" data-es="Nombre">Name</label>
-              <input 
-                type="text" 
-                id="join-name" 
-                placeholder="Enter your name / Ingrese su Nombre" 
+              <input
+                type="text"
+                id="join-name"
+                placeholder="Enter your name / Ingrese su Nombre"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="join-email" data-en="Email" data-es="Correo Electrónico">Email</label>
-              <input 
-                type="email" 
-                id="join-email" 
-                placeholder="Enter your email / Ingrese su correo electrónico" 
+              <input
+                type="email"
+                id="join-email"
+                placeholder="Enter your email / Ingrese su correo electrónico"
                 required
               >
             </div>
@@ -143,18 +143,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="join-contact" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
-              <input 
-                type="tel" 
-                id="join-contact" 
-                placeholder="Enter your contact number / Ingrese su número" 
+              <input
+                type="tel"
+                id="join-contact"
+                placeholder="Enter your contact number / Ingrese su número"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="join-date" data-en="Date" data-es="Fecha">Date</label>
-              <input 
-                type="date" 
-                id="join-date" 
+              <input
+                type="date"
+                id="join-date"
                 required
               >
             </div>
@@ -163,18 +163,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="join-time" data-en="Time" data-es="Hora">Time</label>
-              <input 
-                type="time" 
-                id="join-time" 
+              <input
+                type="time"
+                id="join-time"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="join-resume" data-en="Upload Your Resume" data-es="Sube tu Currículum">Upload Your Resume</label>
-              <input 
-                type="file" 
-                id="join-resume" 
-                accept=".pdf,.doc,.docx" 
+              <input
+                type="file"
+                id="join-resume"
+                accept=".pdf,.doc,.docx"
                 required
               >
             </div>
@@ -183,19 +183,19 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="join-cover" data-en="Upload Your Cover Letter" data-es="Sube tu Carta de Presentación">Upload Your Cover Letter</label>
-              <input 
-                type="file" 
-                id="join-cover" 
-                accept=".pdf,.doc,.docx" 
+              <input
+                type="file"
+                id="join-cover"
+                accept=".pdf,.doc,.docx"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="join-comment" data-en="Comment" data-es="Comentario">Comment</label>
-              <textarea 
-                id="join-comment" 
-                rows="4" 
-                placeholder="Tell us about yourself" 
+              <textarea
+                id="join-comment"
+                rows="4"
+                placeholder="Tell us about yourself"
                 required
               ></textarea>
             </div>
@@ -204,11 +204,11 @@
       </div>
       <!-- Modal Footer: Submit Button -->
       <div class="modal-footer">
-        <button 
-          type="submit" 
-          form="join-form" 
-          class="submit-button" 
-          data-en="Submit" 
+        <button
+          type="submit"
+          form="join-form"
+          class="submit-button"
+          data-en="Submit"
           data-es="Enviar"
         >Submit</button>
       </div>
@@ -232,19 +232,19 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="contact-name" data-en="Name" data-es="Nombre">Name</label>
-              <input 
-                type="text" 
-                id="contact-name" 
-                placeholder="Enter your name / Ingrese su Nombre" 
+              <input
+                type="text"
+                id="contact-name"
+                placeholder="Enter your name / Ingrese su Nombre"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="contact-email" data-en="Email" data-es="Correo Electrónico">Email</label>
-              <input 
-                type="email" 
-                id="contact-email" 
-                placeholder="Enter your email / Ingrese su correo electrónico" 
+              <input
+                type="email"
+                id="contact-email"
+                placeholder="Enter your email / Ingrese su correo electrónico"
                 required
               >
             </div>
@@ -253,18 +253,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="contact-number" data-en="Contact Number" data-es="Número de Contacto">Contact Number</label>
-              <input 
-                type="tel" 
-                id="contact-number" 
-                placeholder="Enter your contact number / Ingrese su número" 
+              <input
+                type="tel"
+                id="contact-number"
+                placeholder="Enter your contact number / Ingrese su número"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="contact-date" data-en="Preferred Date" data-es="Fecha Preferida">Preferred Date</label>
-              <input 
-                type="date" 
-                id="contact-date" 
+              <input
+                type="date"
+                id="contact-date"
                 required
               >
             </div>
@@ -273,18 +273,18 @@
           <div class="form-row">
             <div class="form-cell">
               <label for="contact-time" data-en="Preferred Time" data-es="Hora Preferida">Preferred Time</label>
-              <input 
-                type="time" 
-                id="contact-time" 
+              <input
+                type="time"
+                id="contact-time"
                 required
               >
             </div>
             <div class="form-cell">
               <label for="contact-comments" data-en="Comments" data-es="Comentarios">Comments</label>
-              <textarea 
-                id="contact-comments" 
-                rows="4" 
-                placeholder="What service are you interested in? / En qué servicio está interesado?" 
+              <textarea
+                id="contact-comments"
+                rows="4"
+                placeholder="What service are you interested in? / En qué servicio está interesado?"
                 required
               ></textarea>
             </div>
@@ -293,11 +293,11 @@
       </div>
       <!-- Modal Footer: Submit Button -->
       <div class="modal-footer">
-        <button 
-          type="submit" 
-          form="contact-form" 
-          class="submit-button" 
-          data-en="Send" 
+        <button
+          type="submit"
+          form="contact-form"
+          class="submit-button"
+          data-en="Send"
           data-es="Enviar"
         >Send</button>
       </div>
@@ -349,7 +349,91 @@
   <!-- ==================================================================
        JavaScript: Main Functionality & Mobile Menu Toggle
        ================================================================== -->
-  <script src="js/main.js" defer></script>
-  <script src="js/service-worker.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/service-worker.js" defer></script>
+
+  <!-- Chat Panel HTML (Injected Here) -->
+  <!-- Chat Panel Container - This is the main element to inject into your page -->
+  <div id="aiChatPanel" class="ai-chat-panel" role="complementary" aria-labelledby="aiChatPanelHeaderTitle" style="display: none;">
+    <!-- Chat Header -->
+    <div class="ai-chat-panel-header">
+        <h2 id="aiChatPanelHeaderTitle" class="ai-chat-panel-title">AI Assistant</h2>
+        <button id="aiChatPanelCloseButton" class="ai-chat-panel-close-button" aria-label="Close chat panel">&times;</button>
+    </div>
+
+    <!-- Chat Messages Area -->
+    <div id="aiChatPanelMessages" class="ai-chat-panel-messages" aria-live="polite" aria-atomic="false">
+        <!-- Initial message or messages will appear here -->
+        <div class="message ai-message">
+            <p>Hello! Please complete the security check to start chatting.</p>
+        </div>
+    </div>
+
+    <!-- Security Check (reCAPTCHA/Turnstile) Container -->
+    <div id="aiChatPanelSecurityCheck" class="ai-chat-panel-security-check">
+        <p><em>Please verify you are human:</em></p>
+        <!-- Example for Google reCAPTCHA v2 -->
+        <!-- IMPORTANT: Replace YOUR_RECAPTCHA_V2_SITE_KEY_PANEL with your actual site key -->
+        <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_V2_SITE_KEY_PANEL" data-callback="onPanelRecaptchaSuccess" data-expired-callback="onPanelRecaptchaExpired"></div>
+
+        <!-- Example for Cloudflare Turnstile -->
+        <!-- IMPORTANT: Replace YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL with your actual site key -->
+        <!-- <div class="cf-turnstile" data-sitekey="YOUR_CLOUDFLARE_TURNSTILE_SITE_KEY_PANEL" data-callback="onPanelTurnstileSuccess"></div> -->
+    </div>
+
+    <!-- Chat Input Area -->
+    <div id="aiChatPanelInputArea" class="ai-chat-panel-input-area">
+        <form id="aiChatPanelForm" action="javascript:void(0);">
+            <!-- Honeypot field for bot detection -->
+            <div class="ai-chat-panel-honeypot-field" aria-hidden="true">
+                <label for="panel_contact_me_by_fax_only">Contact me by fax only (bots)</label>
+                <input type="checkbox" name="panel_contact_me_by_fax_only" id="panel_contact_me_by_fax_only" value="1" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input type="text" id="aiChatPanelUserInput" class="ai-chat-panel-user-input" placeholder="Type your message..." autocomplete="off" disabled aria-label="User message input">
+            <button type="submit" id="aiChatPanelSendButton" class="ai-chat-panel-send-button" disabled>Send</button>
+        </form>
+    </div>
+    <!-- Note: Scripts for reCAPTCHA/Turnstile (api.js) should be loaded by the main page -->
+  </div>
+  <!-- End of Chat Panel HTML -->
+
+  <!-- Script for Chat Panel Logic -->
+  <script src="chatbot_files/js/chatbot_panel.js"></script>
+  <script>
+    // Initialize the chat panel once the DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.AIChatPanelController) {
+        window.AIChatPanelController.init();
+      }
+
+      // Modify existing mobile chat link to toggle the panel
+      const mobileChatLink = document.querySelector('.mobile-nav a[href="#"] i.fa-comment-alt'); // More specific selector
+      if (mobileChatLink) {
+        const mobileChatButton = mobileChatLink.closest('a'); // Get the anchor tag
+        if (mobileChatButton) {
+            mobileChatButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                if (window.AIChatPanelController) {
+                    window.AIChatPanelController.toggle();
+                }
+            });
+        }
+      }
+      // TODO: Add a desktop floating icon trigger if needed and wire it up similarly.
+      // Example Desktop FAB (add this HTML where appropriate, e.g., before closing body):
+      // <button id="desktopChatFAB" style="position:fixed; bottom:20px; right:20px; z-index:1001; padding:15px; background-color:#6a0dad; color:white; border-radius:50%; border:none; cursor:pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);"><i class="fas fa-comment-alt"></i></button>
+      // const desktopChatFAB = document.getElementById('desktopChatFAB');
+      // if (desktopChatFAB && window.AIChatPanelController) {
+      //   desktopChatFAB.addEventListener('click', () => {
+      //     window.AIChatPanelController.toggle();
+      //   });
+      // }
+    });
+  </script>
+  <!-- Google reCAPTCHA API Script (Uncomment and use one of these if needed for the panel) -->
+  <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+  <!-- Or Cloudflare Turnstile -->
+  <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 </body>
 </html>

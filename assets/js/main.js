@@ -10,7 +10,9 @@
   // Function to fetch and apply translations
   async function loadTranslations(lang) {
     try {
-      const response = await fetch(`../i18n/${lang}.json`); // Path relative to HTML files
+      // Path must be relative to the HTML file that loads main.js
+      // e.g., if contact_us/contact.html loads this, it needs to go up one level then into assets/i18n
+      const response = await fetch(`../assets/i18n/${lang}.json`);
       if (!response.ok) {
         console.error(`Error loading translation file for ${lang}: ${response.statusText}`);
         // Fallback to English if the selected language file fails to load, except if English itself fails
